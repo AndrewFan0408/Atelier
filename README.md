@@ -60,3 +60,45 @@ ttygif (https://github.com/icholy/ttygif)
 Further READing
 README Overview (https://www.makeareadme.com/)
 A curated list of awesome READMEs (https://github.com/matiassingers/awesome-readme)
+
+Project Title - Atelier
+
+Overview - Retail website that gives users several options including selecting size, color, adding the selected item to cart, browsing through related products, giving reviews, and much more.
+
+Table of Contents -
+
+Overview
+  * Product Information
+  * Style Selector
+  * Add to Cart
+  * Image Gallery
+
+Ratings & Reviews
+  * Reviews List
+  * Individual Review Tile
+  * Sort Options
+  * Rating Breakdown (Filtering)
+  * Product Breakdown (Factors)
+  * Write New Review
+  * Keyword search - Low Priority
+
+Questions & Answers
+  * Questions List
+  * Individual Question
+  * Search Questions
+  * More Answered Questions
+  * Add a Question
+  * Add an Answer Modal
+
+Related Items & Comparison
+  * Related Product Cards
+  * List Behavior
+  * Related Products List
+  * Your Outfit List
+
+
+Description -
+
+Installation - react, react-dom, express, webpack, webpack-cli, babel-loader, @babel/preset-env, @babel/preset-react
+
+Usage -
