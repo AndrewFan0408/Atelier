@@ -16,7 +16,7 @@ const example = {
                   "id": 5990581,
                   "body": "hi",
                   "date": "2023-02-08T00:00:00.000Z",
-                  "answerer_name": "hi",
+                  "answerer_name": "seller",
                   "helpfulness": 6,
                   "photos": []
               },

@@ -10,7 +10,7 @@ const AnswerList = ( { answers } )=> {
     setNumberOfAnswers(2);
   }
   return (
-    <div>
+    <div className="answer-list">
       {Object.values(answers).slice(0, numberOfAnswers).map(answer => {
         return <AnswerItem answer={answer} key={answer.id} />
       })}
