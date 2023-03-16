@@ -6,7 +6,7 @@ const QuestionList = ( { questions } ) => {
   const handleShowMoreQuestionsClick = () => {
     setNumberOfAnswers(Object.values(answers).length);
   }
-  const sortedQuestions = [...questions].sort((a, b) => b.helpfullness - a.helpfulness);
+  const sortedQuestions = [...questions].sort((a, b) => b.helpfulness - a.helpfulness);
   return (
     <div>
       {sortedQuestions.slice(0, numberOfQuestions).map(question => {

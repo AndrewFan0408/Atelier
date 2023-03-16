@@ -6,7 +6,7 @@ const AnswerItem = ( { answer } ) => {
   const date = new Date(answer.date);
   const formattedDate = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
   const [voted, setVoted] = React.useState(false);
-  const [reported, setReported] = React.useState(false);
+  const [reported, setReported] = React.useState(false)
   const handleHelpfulClick = () => {
     axios.put(url + `${answer.id}` + '/helpful', null, {
       headers: {

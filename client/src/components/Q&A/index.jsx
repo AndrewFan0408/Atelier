@@ -17,7 +17,7 @@ const example = {
                   "body": "hi",
                   "date": "2023-02-08T00:00:00.000Z",
                   "answerer_name": "seller",
-                  "helpfulness": 6,
+                  "helpfulness": 2,
                   "photos": []
               },
               "5990599": {
@@ -43,7 +43,7 @@ const example = {
                   "body": "This is a bit smaller than I expected",
                   "date": "2023-02-11T00:00:00.000Z",
                   "answerer_name": "Reviewed",
-                  "helpfulness": 0,
+                  "helpfulness": 10,
                   "photos": [
                       "http://res.cloudinary.com/fec-cars/image/upload/v1676144741/ifavztl467jqwur29nnk.png"
                   ]
