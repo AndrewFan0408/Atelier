@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-let AUTH = process.env.AUTH_SECRET;
+
 import QuestionList from './QuestionList';
 const example = {
   "product_id": "40344",
@@ -95,7 +95,6 @@ const example = {
 const QandA = ( { product_id }) => {
   // create axios get request to /qa/questions?=product_id
   const [questions, setQuestion] = useState(example);
-
   return (
     <div id="QandA">
       <h1>Questions & Answers</h1>
