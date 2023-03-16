@@ -6,6 +6,7 @@ const AnswerItem = ( { answer } ) => {
   const date = new Date(answer.date);
   const formattedDate = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
   const [voted, setVoted] = React.useState(false);
+  const [reported, setReported] = React.useState(false);
   const handleHelpfulClick = () => {
     axios.put(url + `${answer.id}` + '/helpful', null, {
       headers: {
@@ -19,7 +20,21 @@ const AnswerItem = ( { answer } ) => {
         console.log('err put request to server\n', err)
       });
     setVoted(!voted);
-  }
+  };
+  const handleReportAnswerClick = () => {
+    axios.put(url + `${answer.id}` + '/report', null, {
+      headers: {
+        'Authorization': process.env.AUTH_SECRET
+      }
+    })
+      .then(response => {
+        console.log('sucessfully marked as reported')
+      })
+      .catch(err => {
+        console.log('err put request to server\n', err)
+      });
+    setReported(true);
+  };
   return (
     <div>
       <p>A: {answer.body} </p>
@@ -31,7 +46,13 @@ const AnswerItem = ( { answer } ) => {
           <a onClick={handleHelpfulClick}> Yes ({answer.helpfulness})</a>
         )}
         {voted && (
-          <span>   Thanks for your feedback</span>
+          <span>Thanks for your feedback</span>
+        )}
+        {!reported && (
+          <a onClick={handleReportAnswerClick}>Report</a>
+        )}
+        {reported && (
+          <span>Reported</span>
         )}
       </p>
     </div>
