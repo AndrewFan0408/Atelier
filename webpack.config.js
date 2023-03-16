@@ -1,5 +1,6 @@
 const path = require('path');
-
+const webpack = require('webpack');
+require("dotenv").config();
 module.exports = {
   entry: path.join(__dirname, './client/src/index.jsx'),
   output: {
@@ -10,7 +11,13 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'AUTH_SECRET': process.env.AUTH_SECRET
+      }
+    })
+  ],
   module: {
     rules: [
       {
