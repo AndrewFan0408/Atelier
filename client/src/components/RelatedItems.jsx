@@ -9,3 +9,5 @@ const RelatedItems = () => {
 };
 
 export default RelatedItems;
+
+
