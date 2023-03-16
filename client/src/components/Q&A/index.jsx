@@ -99,7 +99,12 @@ const QandA = ( { product_id }) => {
   return (
     <div id="QandA">
       <h1>Questions & Answers</h1>
+      {questions.results.length === 0 ? (
+        <p>No questions have been submited to this product</p>
+        // ADD BUTTON TO QUESTION IMPORT FORM
+      ) :
       <QuestionList questions={questions.results} />
+      }
     </div>
   )
 };
