@@ -19,16 +19,19 @@ const AnswerList = ( { answers } )=> {
   const handleShowLessAnswersClick = () => {
     setNumberOfAnswers(2);
   }
+  // maxHeight: '50vh', overflowY: 'scroll'
   return (
-    <div className="answer-list">
-      {sortedAnswers.slice(0, numberOfAnswers).map(answer => {
-        return <AnswerItem answer={answer} key={answer.id} />
-      })}
+    <div className="answer-list-container">
+      <div className="answer-list">
+        {sortedAnswers.slice(0, numberOfAnswers).map(answer => {
+          return <AnswerItem answer={answer} key={answer.id} />
+        })}
+      </div>
       {numberOfAnswers < sortedAnswers.length && (
-        <button onClick={handleShowMoreAnswersClick}>Load More Answers</button>
+        <button onClick={handleShowMoreAnswersClick}>See More Answers</button>
       )}
       {numberOfAnswers === sortedAnswers.length && (
-        <button onClick={handleShowLessAnswersClick}>See Less Answers</button>
+        <button onClick={handleShowLessAnswersClick}>Collapse Answers</button>
       )}
     </div>
   )
