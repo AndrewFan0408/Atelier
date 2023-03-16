@@ -1,6 +1,7 @@
 # Atelier
 
 Steps to create a new branch for work:
+    
     Switch to main branch to update data:
         “Git checkout main”
 
