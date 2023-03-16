@@ -3,7 +3,6 @@ import AnswerItem from './AnswerItem';
 
 const AnswerList = ( { answers } )=> {
   const [numberOfAnswers, setNumberOfAnswers] = React.useState(2);
-  console.log(answers);
   const handleShowMoreAnswersClick = () => {
     setNumberOfAnswers(Object.values(answers).length);
   }

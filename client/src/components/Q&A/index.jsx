@@ -93,6 +93,7 @@ const example = {
   ]
 }
 const QandA = ( { product_id }) => {
+  // create axios get request to /qa/questions?=product_id
   const [questions, setQuestion] = useState(example);
 
   return (

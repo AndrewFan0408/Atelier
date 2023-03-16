@@ -1,7 +1,6 @@
 import React from 'react';
 import AnswerList from './AnswerList';
 const QuestionItem = ( { question } ) => {
-  console.log(question);
   return (
     <div>
       <h3>Q: {question.question_body}</h3>
