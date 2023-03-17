@@ -1,8 +1,11 @@
 import React from 'react';
 import Overview from './Overview';
-import QandA from './Q&A';
+// import QandA from './Q&A';
 import RandR from './R&R';
 import RelatedItems from './RelatedItems';
+import logo from "../images/temp.png";
+import profile from "../images/placeholder_logo.png";
+
 
 const App = () => {
   const [form, setForm] = React.useState(<div id="blank"><p>change your form here to view it, but <em>DO NOT</em> alter anything else in this app</p></div>);
@@ -12,14 +15,38 @@ const App = () => {
     // setForm(<FILL_ME_IN />);
   }, [])
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('clicked');
+  };
+
   return (
-    <div>
+    <>
+      <div id="header">
+        <img id="brand-title" src={logo} width={100} height={50}/>
+        <div id="header-right">
+          <form id="searchStore" onSubmit={handleSubmit}>
+            <label>
+              <input type="text" name="search-store"/>
+            </label>
+            <input type="submit"/>
+          </form>
+          <i class="fa-solid fa-cart-shopping fa-2x"></i>
+          <i class="fa-solid fa-user fa-2x"></i>
+        </div>
+        <div id="overview">
+
+        </div>
+      </div>
+      <div id="Overview">
+
+      </div>
       <h1>Montserrat (h1)</h1>
       <h3>Playfair Display (h3)</h3>
       <h5>Roboto (h5)</h5>
       <p>Lato (p)</p>
       <>{form}</>
-    </div>
+    </>
   )
 };
 

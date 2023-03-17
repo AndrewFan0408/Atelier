@@ -21,3 +21,49 @@ h5 {
   font-family: 'Roboto, sans-serif';
   font-size: 18px;
 }
+
+/* _________________________ */
+
+#header {
+  width: 100%;
+  margin-left: -3px;
+  border: 3px solid blue;
+  position: relative;
+}
+
+#brand-title {
+  display: block;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+#header-right {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px;
+}
+
+#searchStore input {
+  width: 250px;
+  height: 30px;
+ }
+
+#searchStore [type=submit] {
+  top: 0px;
+  width: 50px;
+  height: 35px;
+  text-align: center;
+  background-color: white;
+}
+
+.fa-cart-shopping, .fa-user, #searchStore {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 10px;
+}
+
+#header-right {
+  position: absolute;
+  right: 0px;
+  top: 5px;
+}
