@@ -5,16 +5,22 @@ import RandR from './R&R';
 import RelatedItems from './RelatedItems';
 import logo from "../images/temp.png";
 import profile from "../images/placeholder_logo.png";
-
+import axios from 'axios'
 
 const App = () => {
   //FILL IN YOUR COMPONENT BELOW
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
   };
 
+  React.useEffect(() => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products', null, {
+      header : {
+
+      }
+    })
+  }, []);
   return (
     <>
       <div id="header">
@@ -50,7 +56,7 @@ const App = () => {
       </div>
 
       <div id="qna">
-        <h2>Q&A</h2>
+        <QandA />
       </div>
 
       <div id="related-items">

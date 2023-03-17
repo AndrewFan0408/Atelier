@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-let AUTH = process.env.AUTH_SECRET;
+
 import QuestionList from './QuestionList';
 const example = {
   "product_id": "40344",
@@ -16,8 +16,8 @@ const example = {
                   "id": 5990581,
                   "body": "hi",
                   "date": "2023-02-08T00:00:00.000Z",
-                  "answerer_name": "hi",
-                  "helpfulness": 6,
+                  "answerer_name": "seller",
+                  "helpfulness": 2,
                   "photos": []
               },
               "5990599": {
@@ -43,7 +43,7 @@ const example = {
                   "body": "This is a bit smaller than I expected",
                   "date": "2023-02-11T00:00:00.000Z",
                   "answerer_name": "Reviewed",
-                  "helpfulness": 0,
+                  "helpfulness": 10,
                   "photos": [
                       "http://res.cloudinary.com/fec-cars/image/upload/v1676144741/ifavztl467jqwur29nnk.png"
                   ]
@@ -94,19 +94,18 @@ const example = {
 }
 const QandA = ( { product_id }) => {
   // create axios get request to /qa/questions?=product_id
-  const [questions, setQuestion] = useState(example);
-
-  return (
+const [questions, setQuestion] = useState(example);
+return (
     <div id="QandA">
-      <h1>Questions & Answers</h1>
-      {questions.results.length === 0 ? (
+    <h1>Questions & Answers</h1>
+    {questions.results.length === 0 ? (
         <p>No questions have been submited to this product</p>
         // ADD BUTTON TO QUESTION IMPORT FORM
-      ) :
-      <QuestionList questions={questions.results} />
-      }
+    ) :
+    <QuestionList questions={questions.results} />
+    }
     </div>
-  )
+)
 };
 
 export default QandA;
