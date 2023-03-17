@@ -1,25 +1,24 @@
 import React from 'react';
 import Overview from './Overview';
-// import QandA from './Q&A';
+import QandA from './Q&A';
 import RandR from './R&R';
 import RelatedItems from './RelatedItems';
 import logo from "../images/temp.png";
 import profile from "../images/placeholder_logo.png";
 import axios from 'axios'
-
+import { fetchProducts } from './Fetcher';
+import { useDispatch, useSelector } from 'react-redux';
 const App = () => {
   //FILL IN YOUR COMPONENT BELOW
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.products);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
   };
 
   React.useEffect(() => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products', null, {
-      header : {
-
-      }
-    })
+    dispatch(fetchProducts());
   }, []);
   return (
     <>
