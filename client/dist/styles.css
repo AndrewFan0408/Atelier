@@ -1,5 +1,17 @@
-body {
+/* _________________________ */
+/*          Overall          */
+/* _________________________ */
+
+:root {
+  --overviewSize: 75vh;
+  --qnaSize: 50vh;
+  --ratingSize: 75vh;
+  --divSize: calc(var(--overviewSize) + var(--qnaSize) + var(--ratingSize) + 4.5vh);
+}
+
+html, body {
   color: black;
+  min-width:900px;
 }
 
 h1 {
@@ -20,4 +32,173 @@ p {
 h5 {
   font-family: 'Roboto, sans-serif';
   font-size: 18px;
+}
+
+/* _________________________ */
+/*           Header          */
+/* _________________________ */
+
+#header {
+  width: 100%;
+  margin-left: -3px;
+  border: 3px solid blue;
+  position: relative;
+}
+
+#brand-title {
+  display: block;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+#header-right {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px;
+}
+
+#searchStore input {
+  width: 250px;
+  height: 30px;
+ }
+
+#searchStore [type=submit] {
+  top: 0px;
+  width: 50px;
+  height: 35px;
+  text-align: center;
+  background-color: white;
+}
+
+.fa-cart-shopping, .fa-user, #searchStore {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 10px;
+}
+
+#header-right {
+  position: absolute;
+  right: 0px;
+  top: 5px;
+}
+
+/* _________________________ */
+/*          Overview         */
+/* _________________________ */
+
+#overview {
+  display: inline-block;
+
+  padding-top: 5px;
+  border: 3px solid blue;
+
+  width: 60%;
+  height: var(--overviewSize);
+
+  margin-left: -3px;
+  margin-top: 5px;
+}
+
+#overview h2 {
+  text-align: center;
+  font-size: 50px;
+}
+
+/* _________________________ */
+/*      Overview INFO         */
+/* _________________________ */
+
+#overview-info {
+  border: 3px solid blue;
+  float: right;
+
+  width: 39%;
+  height: var(--divSize);
+  margin-top: 5px;
+}
+
+#sticky-item {
+  border: 3px solid blue;
+  top: 0;
+  height: 80vh;
+
+  position: sticky;
+  top: 5em;
+}
+
+#overview-info h2 {
+  text-align: center;
+  font-size: 50px;
+}
+
+/* _________________________ */
+/*      ratings-review       */
+/* _________________________ */
+
+
+#ratings-review {
+  display: inline-block;
+
+  padding-top: 5px;
+  border: 3px solid blue;
+
+  /* DO NOT change height from here, go to root */
+  width: 60%;
+  height: var(--ratingSize);
+
+  margin-left: -3px;
+  margin-top: 5px;
+}
+
+#ratings-review h2 {
+  text-align: center;
+  font-size: 50px;
+}
+
+/* _________________________ */
+/*           Q&A              */
+/* _________________________ */
+
+
+#qna {
+  display: inline-block;
+
+  padding-top: 5px;
+  border: 3px solid blue;
+
+  /* DO NOT change height from here, go to root */
+  width: 60%;
+  height: var(--qnaSize);
+
+  margin-left: -3px;
+  margin-top: 5px;
+}
+
+#qna h2 {
+  text-align: center;
+  font-size: 50px;
+}
+
+/* _________________________ */
+/*      related items        */
+/* _________________________ */
+
+
+#related-items {
+  display: inline-block;
+
+  padding-top: 5px;
+  border: 3px solid blue;
+
+  /* DO NOT change height from here, go to root */
+  width: 100%;
+  height: 30vh;
+
+  margin-left: -3px;
+  margin-top: 5px;
+}
+
+#related-items h2 {
+  text-align: center;
+  font-size: 50px;
 }
