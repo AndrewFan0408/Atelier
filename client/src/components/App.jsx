@@ -8,12 +8,7 @@ import profile from "../images/placeholder_logo.png";
 
 
 const App = () => {
-  const [form, setForm] = React.useState(<div id="blank"><p>change your form here to view it, but <em>DO NOT</em> alter anything else in this app</p></div>);
-
-  //FILL IN YOUR COMPONENT BELOW, COMMENT OUT TAGS AFTER VIEWING
-  React.useEffect(() => {
-    // setForm(<FILL_ME_IN />);
-  }, [])
+  //FILL IN YOUR COMPONENT BELOW
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,18 +29,33 @@ const App = () => {
           <i class="fa-solid fa-cart-shopping fa-2x"></i>
           <i class="fa-solid fa-user fa-2x"></i>
         </div>
-        <div id="overview">
+      </div>
 
+      <div id="overview">
+        <h2>overview</h2>
+        <h1>Montserrat (h1)</h1>
+        <h3>Playfair Display (h3)</h3>
+        <h5>Roboto (h5)</h5>
+        <p>Lato (p)</p>
+      </div>
+
+      <div id="overview-info">
+        <div id="sticky-item">
+          <h2>overview info</h2>
         </div>
       </div>
-      <div id="Overview">
 
+      <div id="ratings-review">
+        <h2>ratings and review</h2>
       </div>
-      <h1>Montserrat (h1)</h1>
-      <h3>Playfair Display (h3)</h3>
-      <h5>Roboto (h5)</h5>
-      <p>Lato (p)</p>
-      <>{form}</>
+
+      <div id="qna">
+        <h2>Q&A</h2>
+      </div>
+
+      <div id="related-items">
+        <h2>Related Items</h2>
+      </div>
     </>
   )
 };
