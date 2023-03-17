@@ -94,18 +94,18 @@ const example = {
 }
 const QandA = ( { product_id }) => {
   // create axios get request to /qa/questions?=product_id
-  const [questions, setQuestion] = useState(example);
-  return (
+const [questions, setQuestion] = useState(example);
+return (
     <div id="QandA">
-      <h1>Questions & Answers</h1>
-      {questions.results.length === 0 ? (
+    <h1>Questions & Answers</h1>
+    {questions.results.length === 0 ? (
         <p>No questions have been submited to this product</p>
         // ADD BUTTON TO QUESTION IMPORT FORM
-      ) :
-      <QuestionList questions={questions.results} />
-      }
+    ) :
+    <QuestionList questions={questions.results} />
+    }
     </div>
-  )
+)
 };
 
 export default QandA;
