@@ -15,6 +15,8 @@ const App = () => {
     console.log('clicked');
   };
 
+  console.log('hi'):
+
   return (
     <>
       <div id="header">
