@@ -14,14 +14,13 @@ const AnswerList = ( { answers } )=> {
   });
   const handleShowMoreAnswersClick = () => {
     setNumberOfAnswers(Object.values(answers).length);
-    document.getElementById('qna').style.overflowY = 'scroll';
-
+    document.getElementByClassName('answer-list').style.overflowY = 'scroll';
   }
   const handleShowLessAnswersClick = () => {
     setNumberOfAnswers(2);
-    document.getElementById('qna').style.overflowY = 'hidden';
+    document.getElementByClassName('answer-list').style.overflowY = 'hidden';
   }
-  // maxHeight: '50vh', overflowY: 'scroll'
+
   return (
     <div className="answer-list-container">
       <div className="answer-list">

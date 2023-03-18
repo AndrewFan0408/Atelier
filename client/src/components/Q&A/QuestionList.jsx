@@ -12,14 +12,14 @@ const QuestionList = ( { questions } ) => {
     dispatch({
       type: 'SHOW_MORE_QUESTIONS',
     })
-    document.getElementById('qna').style.overflowY = 'scroll';
+    document.getElementByClassName('answer-list').style.overflowY = 'scroll';
     setMoreQuestions(true);
   }
   const handleShowLessQuestionsClick = () => {
     dispatch({
       type: 'SHOW_LESS_QUESTIONS',
     })
-    document.getElementById('qna').style.overflowY = 'hidden';
+    document.getElementByClassName('answer-list').style.overflowY = 'hidden';
     setMoreQuestions(false);
   }
   const sortedQuestions = [...questions].sort((a, b) => b.helpfulness - a.helpfulness);

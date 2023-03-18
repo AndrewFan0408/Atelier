@@ -154,7 +154,9 @@ h5 {
   text-align: center;
   font-size: 50px;
 }
-
+.answer-list {
+  max-height: var(--qnaSize);
+}
 /* _________________________ */
 /*           Q&A              */
 /* _________________________ */
@@ -181,6 +183,10 @@ h5 {
 
 .qna-search input {
   width: 250px;
+}
+.answer-list {
+  max-height: 260px;
+  overflow-y: auto;
 }
 /* _________________________ */
 /*      related items        */
