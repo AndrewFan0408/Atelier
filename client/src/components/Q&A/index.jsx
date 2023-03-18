@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 const QandA = ( { product_id }) => {
   // create axios get request to /qa/questions?=product_id
 const questions = useSelector(state => state.questions);
-console.log(questions);
 return (
     <div id="QandA">
     <h1>Questions & Answers</h1>

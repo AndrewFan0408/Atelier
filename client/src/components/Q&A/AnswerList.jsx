@@ -15,9 +15,13 @@ const AnswerList = ( { answers } )=> {
   });
   const handleShowMoreAnswersClick = () => {
     setNumberOfAnswers(Object.values(answers).length);
+    document.getElementById('qna').style.overflowY = 'scroll';
+
   }
   const handleShowLessAnswersClick = () => {
     setNumberOfAnswers(2);
+    document.getElementById('qna').style.overflowY = 'hidden';
+
   }
   // maxHeight: '50vh', overflowY: 'scroll'
   return (

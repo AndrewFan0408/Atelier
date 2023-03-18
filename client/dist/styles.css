@@ -168,7 +168,7 @@ h5 {
 
   /* DO NOT change height from here, go to root */
   width: 60%;
-  height: var(--qnaSize);
+  max-height: var(--qnaSize);
 
   margin-left: -3px;
   margin-top: 5px;
