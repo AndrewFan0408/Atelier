@@ -12,14 +12,12 @@ const QuestionList = ( { questions } ) => {
     dispatch({
       type: 'SHOW_MORE_QUESTIONS',
     })
-    document.getElementByClassName('answer-list').style.overflowY = 'scroll';
     setMoreQuestions(true);
   }
   const handleShowLessQuestionsClick = () => {
     dispatch({
       type: 'SHOW_LESS_QUESTIONS',
     })
-    document.getElementByClassName('answer-list').style.overflowY = 'hidden';
     setMoreQuestions(false);
   }
   const sortedQuestions = [...questions].sort((a, b) => b.helpfulness - a.helpfulness);

@@ -14,11 +14,9 @@ const AnswerList = ( { answers } )=> {
   });
   const handleShowMoreAnswersClick = () => {
     setNumberOfAnswers(Object.values(answers).length);
-    document.getElementByClassName('answer-list').style.overflowY = 'scroll';
   }
   const handleShowLessAnswersClick = () => {
     setNumberOfAnswers(2);
-    document.getElementByClassName('answer-list').style.overflowY = 'hidden';
   }
 
   return (
