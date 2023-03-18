@@ -3,7 +3,6 @@ import AnswerItem from './AnswerItem';
 
 const AnswerList = ( { answers } )=> {
   const [numberOfAnswers, setNumberOfAnswers] = React.useState(2);
-  console.log(Object.values(answers));
   const sortedAnswers = Object.values(answers).sort((a, b) => {
     if (a.answerer_name === 'seller' && b.answerer_name !== 'seller') {
       return -1;
@@ -21,7 +20,6 @@ const AnswerList = ( { answers } )=> {
   const handleShowLessAnswersClick = () => {
     setNumberOfAnswers(2);
     document.getElementById('qna').style.overflowY = 'hidden';
-
   }
   // maxHeight: '50vh', overflowY: 'scroll'
   return (

@@ -23,10 +23,12 @@ const QuestionList = ( { questions } ) => {
     setMoreQuestions(false);
   }
   const sortedQuestions = [...questions].sort((a, b) => b.helpfulness - a.helpfulness);
-  const filteredQuestions = query.length > 3 ? sortedQuestions.filter(question => question.question_body.toLowerCase().includes(query.toLowerCase())) : sortedQuestions;
+  const filteredQuestions = query.length > 2 ? sortedQuestions.filter(question => question.question_body.toLowerCase().includes(query.toLowerCase())) : sortedQuestions;
   return (
     <div>
-      <input type='text' value={query} onChange={e => setQuery(e.target.value)} />
+      <div className='qna-search'>
+        <input type='text' value={query} onChange={e => setQuery(e.target.value)} placeholder='Have a question? Search for answers…'/>
+      </div>
       {filteredQuestions.slice(0, numberOfQuestions).map(question => {
         return <QuestionItem question={question} key={question.question_id}/>
       })}
