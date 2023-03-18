@@ -18,7 +18,18 @@ Steps to create a new branch for work:
     *Still stuck? Link to a tutorial:*
     https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 
+To pull the latest changes from the main branch without losing your work on the current branch, you can follow these steps:
 
+    First, commit any changes you have made on your current branch using the command git commit -m "commit message".
+
+    Then, switch to the main branch using the command git checkout main.
+
+    Pull the latest changes from the main branch using the command git pull.
+
+    Switch back to your current branch using the command git checkout your-current-branch-name.
+
+    Finally, merge the changes from the main branch into your current branch using the command git merge main.
+    
 
 [Reading] Writing a Compelling README
 What is a README?
