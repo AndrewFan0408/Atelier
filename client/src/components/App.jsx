@@ -5,11 +5,13 @@ import RandR from './R&R';
 import RelatedItems from './RelatedItems';
 import logo from "../images/temp.png";
 import profile from "../images/placeholder_logo.png";
-
-
+import axios from 'axios'
+import { fetchProducts } from './Fetcher';
+import { useDispatch, useSelector } from 'react-redux';
 const App = () => {
   //FILL IN YOUR COMPONENT BELOW
-
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.products);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
@@ -17,6 +19,9 @@ const App = () => {
 
   console.log('hi'):
 
+  React.useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
   return (
     <>
       <div id="header">
