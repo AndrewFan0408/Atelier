@@ -4,8 +4,8 @@
   "description": "creating an FEC ",
   "main": "index.js",
   "scripts": {
-    "dev:webpack": "webpack --watch",
-    "dev:nodemon": "nodemon server/index.js",
+    "client": "webpack --watch",
+    "server": "nodemon server/index.js",
     "dev": "npm run dev:webpack & npm run dev:nodemon"
   },
   "repository": {
