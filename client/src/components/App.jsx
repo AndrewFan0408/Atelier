@@ -1,6 +1,8 @@
 import React from 'react';
 import Overview from './Overview';
 import QandA from './Q&A';
+import ImageView from './Overview/ImageView';
+import SpecsView from './Overview/SpecsView';
 import RandR from './R&R';
 import RelatedItems from './RelatedItems';
 import logo from "../images/temp.png";
@@ -8,8 +10,8 @@ import profile from "../images/placeholder_logo.png";
 import axios from 'axios'
 import { fetchProducts } from './Fetcher';
 import { useDispatch, useSelector } from 'react-redux';
+
 const App = () => {
-  //FILL IN YOUR COMPONENT BELOW
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
   const handleSubmit = (e) => {
@@ -17,11 +19,18 @@ const App = () => {
     console.log('clicked');
   };
 
-  console.log('hi');
-
   React.useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  /*
+    <h2>overview</h2>
+    <h1>Montserrat (h1)</h1>
+    <h3>Playfair Display (h3)</h3>
+    <h5>Roboto (h5)</h5>
+    <p>Lato (p)</p>
+  */
+
   return (
     <>
       <div id="header">
@@ -39,11 +48,7 @@ const App = () => {
       </div>
 
       <div id="overview">
-        <h2>overview</h2>
-        <h1>Montserrat (h1)</h1>
-        <h3>Playfair Display (h3)</h3>
-        <h5>Roboto (h5)</h5>
-        <p>Lato (p)</p>
+
       </div>
 
       <div id="overview-info">
