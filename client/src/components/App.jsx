@@ -17,7 +17,7 @@ const App = () => {
     console.log('clicked');
   };
 
-  console.log('hi'):
+  console.log('hi');
 
   React.useEffect(() => {
     dispatch(fetchProducts());
