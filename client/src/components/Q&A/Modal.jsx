@@ -1,6 +1,7 @@
 import React from 'react';
-
-const Modal = ( { product, handleClose, AnswerBoolean, question } ) => {
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
   const currentProduct = useSelector(state => state.product);
   const title = AnswerBoolean ? 'Submit your Answer' : 'Ask Your Question';
   const subTitle = AnswerBoolean ? `${product.name}: ${question.body}` : `About the ${product.name}`;
@@ -8,11 +9,52 @@ const Modal = ( { product, handleClose, AnswerBoolean, question } ) => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [error, setError] = React.useState('');
-  const handleFormSubmit = (e) => {
+  const [photos, setPhotos] = React.useState([]);
+  const handleQuestionFormSubmit = (e) => {
     e.preventDefault();
-    if (!answerOrQuestion || name || email) {
-
+    if (!email.includes('@') || !email.includes('.')) {
+      setError('Email not in correct format');
+      return;
     }
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', {
+      body: answerOrQuestion,
+      name: name,
+      email: email,
+      product_id: currentProduct.id
+    }, {
+      headers: {
+        Authorization: process.env.AUTH_SECRET
+      }
+    })
+      .then(response => {
+        console.log('sucessfully posted question to server');
+      })
+      .catch(err => {
+        console.log('err posting question to server\n', err);
+      });
+  }
+  const handleAnswerFormSubmit = (e) => {
+    e.preventDefault();
+    if (!email.includes('@') || !email.includes('.')) {
+      setError('Email not in correct format');
+      return;
+    }
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/' + question.id + '/answers', {
+      body: answerOrQuestion,
+      name: name,
+      email: email,
+      photos: photos
+    }, {
+      headers: {
+        Authorization: process.env.AUTH_SECRET
+      }
+    })
+      .then(response => {
+        console.log('sucessfully posted question to server');
+      })
+      .catch(err => {
+        console.log('err posting question to server\n', err);
+      });
   }
   const handleAnswerOrQuestionChange = (e) => {
     setAnswerOrQuestion(e.target.value);
@@ -28,7 +70,7 @@ const Modal = ( { product, handleClose, AnswerBoolean, question } ) => {
       <h1>{title}</h1>
       <h3>{subTitle}</h3>
       {AnswerBoolean ? (
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleAnswerFormSubmit}>
           <label>Your Answer? (mandatory)</label>
           <textarea
           value={answerOrQuestion}
@@ -57,7 +99,7 @@ const Modal = ( { product, handleClose, AnswerBoolean, question } ) => {
           <button type='submit'>Submit Question</button>
         </form>
       ) : (
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleQuestionFormSubmit}>
           <label>Your Question? (mandatory)</label>
           <textarea
           value={question}
@@ -84,6 +126,9 @@ const Modal = ( { product, handleClose, AnswerBoolean, question } ) => {
           />
           <p>For authentication reasons, you will not be emailed.</p>
           <button type='submit'>Submit Question</button>
+          {error && (
+            <p>{error}</p>
+          )}
         </form>
       )}
     </div>
