@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 export const fetchProducts = () => {
   return dispatch => {
     dispatch({ type: 'FETCH_PRODUCTS_PENDING' });
@@ -26,7 +27,7 @@ export const fetchProducts = () => {
             type: 'GET_QUESTIONS_SUCCESS',
             questions: response.data.results,
             answers: response.data.results.answers
-          })
+          });
         })
         .catch(err => {
           console.log('err fetching questions\n', err)

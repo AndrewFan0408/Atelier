@@ -3,7 +3,7 @@ import QuestionList from './QuestionList';
 import { useSelector, useDispatch } from 'react-redux';
 const QandA = ( { product_id }) => {
   // create axios get request to /qa/questions?=product_id
-const questions = useSelector(state => state.questions);
+const questions = useSelector(state => state.answerListReducer.questions);
 console.log(questions);
 return (
     <div id="QandA">

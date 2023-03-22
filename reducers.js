@@ -1,13 +1,24 @@
-const initialState = {
+import { combineReducers } from 'redux'
+
+const al_InitialState = {
   answers: {},
   questions: [],
   numberOfQuestions: 2,
   product: {},
   loading: true,
-  productId: '',
+  productId: '33',
 };
 
-const answerListReducer = (state = initialState, action) => {
+const ov_InitialState = {
+  answers: {},
+  questions: [],
+  numberOfQuestions: 2,
+  product: {},
+  loading: true,
+  productId: '33',
+};
+
+const answerListReducer = (state = al_InitialState, action) => {
   switch (action.type) {
     case 'GET_QUESTIONS_SUCCESS':
       return { ...state, questions: action.questions, answers: action.answers };
@@ -28,4 +39,13 @@ const answerListReducer = (state = initialState, action) => {
   }
 };
 
-export default answerListReducer;
+const overviewReducer = (state = ov_InitialState, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+const combined = combineReducers({ answerListReducer, overviewReducer });
+
+export default combined;

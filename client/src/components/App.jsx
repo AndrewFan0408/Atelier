@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const App = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
+  console.log(`products ${products}`);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
@@ -48,12 +49,12 @@ const App = () => {
       </div>
 
       <div id="overview">
-
+        <ImageView />
       </div>
 
       <div id="overview-info">
         <div id="sticky-item">
-          <h2>overview info</h2>
+          <SpecsView />
         </div>
       </div>
 
