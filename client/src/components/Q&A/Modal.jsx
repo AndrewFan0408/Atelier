@@ -97,6 +97,9 @@ const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
           />
           <p>For authentication reasons, you will not be emailed.</p>
           <button type='submit'>Submit Question</button>
+          {error && (
+            <p>{error}</p>
+          )}
         </form>
       ) : (
         <form onSubmit={handleQuestionFormSubmit}>
