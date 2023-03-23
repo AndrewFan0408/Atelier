@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 const al_InitialState = {
   answers: {},
@@ -33,9 +33,11 @@ const answerListReducer = (state = al_InitialState, action) => {
     case 'SHOW_LESS_ANSWERS':
       return { ...state, numberOfAnswers: 2 };
     case 'FETCH_PRODUCTS_SUCCESS':
-      return {...state, product: action.product, productId: action.product.id, loading: false}
+      return {
+        ...state, product: action.product, productId: action.product.id, loading: false,
+      };
     case 'FETCH_PRODUCTS_FAILURE':
-      return {...state, product: action.product, loading: false}
+      return { ...state, product: action.product, loading: false };
     default:
       return state;
   }
@@ -44,13 +46,13 @@ const answerListReducer = (state = al_InitialState, action) => {
 const overviewReducer = (state = ov_InitialState, action) => {
   switch (action.type) {
     case 'GET_O_PRODUCTS_SUCCESS':
-      return {...state, truthed: true, product: action.product};
+      return { ...state, truthed: true, product: action.product };
     case 'GET_O_PRODUCTS_FAILURE':
-      return {...state, truthed: true, product: action.product};
+      return { ...state, truthed: true, product: action.product };
     case 'GET_O_STYLES_SUCCESS':
-      return {...state, styles: action.styles};
+      return { ...state, styles: action.styles };
     case 'GET_O_RATINGS_SUCCESS':
-      return {...state, ratings: action.ratings};
+      return { ...state, ratings: action.ratings };
     default:
       return state;
   }
@@ -59,7 +61,7 @@ const overviewReducer = (state = ov_InitialState, action) => {
 const relatedItemsReducer = (state = rl_InitialState, action) => {
   switch (action.type) {
     case 'GET_IDS_SUCCESS':
-      return {...state, relatedIds: action.relatedIds};
+      return { ...state, relatedIds: action.relatedIds };
     default:
       return state;
   }

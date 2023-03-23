@@ -1,19 +1,18 @@
 import React from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import Overview from './Overview';
 import QandA from './Q&A';
-import RandR from './R&R';
 import RelatedProducts from './RelatedItems';
-import logo from "../images/temp.png";
-import profile from "../images/placeholder_logo.png";
-import axios from 'axios'
+import logo from '../images/temp.png';
+import profile from '../images/placeholder_logo.png';
 import { fetchProducts } from './Fetcher';
-import { useDispatch, useSelector } from 'react-redux';
 import ImageView from './Overview/ImageView';
 import SpecsView from './Overview/SpecsView';
 
-const App = () => {
+function App() {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.products);
+  const products = useSelector((state) => state.products);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,16 +34,16 @@ const App = () => {
   return (
     <>
       <div id="header">
-        <img id="brand-title" src={logo} width={100} height={50}/>
+        <img id="brand-title" src={logo} width={100} height={50} />
         <div id="header-right">
           <form id="searchStore" onSubmit={handleSubmit}>
             <label>
-              <input type="text" name="search-store"/>
+              <input type="text" name="search-store" />
             </label>
-            <input type="submit"/>
+            <input type="submit" />
           </form>
-          <i class="fa-solid fa-cart-shopping fa-2x"></i>
-          <i class="fa-solid fa-user fa-2x"></i>
+          <i className="fa-solid fa-cart-shopping fa-2x" />
+          <i className="fa-solid fa-user fa-2x" />
         </div>
       </div>
 
@@ -72,7 +71,7 @@ const App = () => {
         <RelatedProducts />
       </div>
     </>
-  )
-};
+  );
+}
 
 export default App;
