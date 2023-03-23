@@ -6,16 +6,18 @@ const al_InitialState = {
   numberOfQuestions: 2,
   product: {},
   loading: true,
-  productId: '33',
+  productId: '',
 };
 
 const ov_InitialState = {
-  answers: {},
-  questions: [],
-  numberOfQuestions: 2,
+  truthed: false,
   product: {},
-  loading: true,
-  productId: '33',
+  ratings: {},
+  styles: [],
+};
+
+const rl_InitialState = {
+  relatedIds: [],
 };
 
 const answerListReducer = (state = al_InitialState, action) => {
@@ -41,11 +43,28 @@ const answerListReducer = (state = al_InitialState, action) => {
 
 const overviewReducer = (state = ov_InitialState, action) => {
   switch (action.type) {
+    case 'GET_O_PRODUCTS_SUCCESS':
+      return {...state, truthed: true, product: action.product};
+    case 'GET_O_PRODUCTS_FAILURE':
+      return {...state, truthed: true, product: action.product};
+    case 'GET_O_STYLES_SUCCESS':
+      return {...state, styles: action.styles};
+    case 'GET_O_RATINGS_SUCCESS':
+      return {...state, ratings: action.ratings};
     default:
       return state;
   }
 };
 
-const combined = combineReducers({ answerListReducer, overviewReducer });
+const relatedItemsReducer = (state = rl_InitialState, action) => {
+  switch (action.type) {
+    case 'GET_IDS_SUCCESS':
+      return {...state, relatedIds: action.relatedIds};
+    default:
+      return state;
+  }
+};
+
+const combined = combineReducers({ answerListReducer, overviewReducer, relatedItemsReducer });
 
 export default combined;
