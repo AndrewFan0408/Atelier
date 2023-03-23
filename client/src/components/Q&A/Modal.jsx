@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 const Modal = ( { isAnswer, handleClose, question } ) => {
-  const currentProduct = useSelector(state => state.product);
+  const currentProduct = useSelector(state => state.answerListReducer.product);
   const title = isAnswer === 'true' ? 'Submit your Answer' : 'Ask Your Question';
   const subTitle = isAnswer === 'true' ? `${currentProduct.name}: ${question.question_body}` : `About the ${currentProduct.name}`;
   const [answerOrQuestion, setAnswerOrQuestion] = React.useState('');
