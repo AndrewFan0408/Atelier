@@ -185,7 +185,7 @@ h5 {
   width: 250px;
 }
 .questions-list {
-  max-height: calc(60% - 20rem);
+  max-height: calc(100vh - 150px);
   overflow-y: auto;
 }
 .modal {
