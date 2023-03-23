@@ -1,15 +1,15 @@
 import React from 'react';
 import Overview from './Overview';
-import QandA from './Q&A';
-import ImageView from './Overview/ImageView';
-import SpecsView from './Overview/SpecsView';
+// import QandA from './Q&A';
 import RandR from './R&R';
-import RelatedItems from './RelatedItems';
+import RelatedProducts from './RelatedItems';
 import logo from "../images/temp.png";
 import profile from "../images/placeholder_logo.png";
 import axios from 'axios'
 import { fetchProducts } from './Fetcher';
 import { useDispatch, useSelector } from 'react-redux';
+import ImageView from './Overview/ImageView';
+import SpecsView from './Overview/SpecsView';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -63,11 +63,12 @@ const App = () => {
       </div>
 
       <div id="qna">
-        <QandA />
+        <h2>Q&A</h2>
       </div>
 
       <div id="related-items">
         <h2>Related Items</h2>
+        <RelatedProducts />
       </div>
     </>
   )

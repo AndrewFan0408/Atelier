@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const SpecsView = () => {
   const store = useSelector(state => state.overviewReducer);
   const testy = useSelector(state => state.relatedItemsReducer);
-  console.log(testy);
+  console.log(store);
 
   return (
     <>
