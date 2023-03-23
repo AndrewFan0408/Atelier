@@ -1,9 +1,8 @@
 import React from 'react';
 import AnswerItem from './AnswerItem';
 
-const AnswerList = ( { answers } )=> {
+const AnswerList = ( { answers, question } )=> {
   const [numberOfAnswers, setNumberOfAnswers] = React.useState(2);
-  console.log(Object.values(answers));
   const sortedAnswers = Object.values(answers).sort((a, b) => {
     if (a.answerer_name === 'seller' && b.answerer_name !== 'seller') {
       return -1;
@@ -19,12 +18,12 @@ const AnswerList = ( { answers } )=> {
   const handleShowLessAnswersClick = () => {
     setNumberOfAnswers(2);
   }
-  // maxHeight: '50vh', overflowY: 'scroll'
+
   return (
     <div className="answer-list-container">
       <div className="answer-list">
         {sortedAnswers.slice(0, numberOfAnswers).map(answer => {
-          return <AnswerItem answer={answer} key={answer.id} />
+          return <AnswerItem answer={answer} key={answer.id} question={question}/>
         })}
       </div>
       {numberOfAnswers < sortedAnswers.length && (

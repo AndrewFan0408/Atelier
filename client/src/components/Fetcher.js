@@ -2,8 +2,6 @@ import axios from 'axios';
 
 export const fetchProducts = () => {
   return dispatch => {
-    dispatch({ type: 'FETCH_PRODUCTS_PENDING' });
-
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=1',
     {
       headers: { 'Authorization': process.env.AUTH_SECRET }
