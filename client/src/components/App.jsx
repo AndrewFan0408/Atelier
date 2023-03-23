@@ -1,8 +1,8 @@
 import React from 'react';
 import Overview from './Overview';
-// import QandA from './Q&A';
+import QandA from './Q&A';
 import RandR from './R&R';
-import RelatedItems from './RelatedItems';
+import RelatedProducts from './RelatedItems';
 import logo from "../images/temp.png";
 import profile from "../images/placeholder_logo.png";
 
@@ -51,10 +51,12 @@ const App = () => {
 
       <div id="qna">
         <h2>Q&A</h2>
+        <QandA />
       </div>
 
       <div id="related-items">
         <h2>Related Items</h2>
+        <RelatedProducts />
       </div>
     </>
   )
