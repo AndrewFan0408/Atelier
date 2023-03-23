@@ -13,6 +13,7 @@ function QandA({ product_id }) {
   const handleClose = () => {
     setShowModal(false);
   };
+  console.log(questions);
   return (
     <div id="QandA">
       <h1>Questions & Answers</h1>
