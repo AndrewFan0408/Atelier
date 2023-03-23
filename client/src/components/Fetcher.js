@@ -17,12 +17,12 @@ export default () => (dispatch) => {
         type: 'GET_O_PRODUCTS_SUCCESS',
         product: response.data[0],
       });
-
+      console.log(response.data);
       return response.data[0].id;
     })
     .then((productId) => {
       axios.get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${productId}`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${40435}`,
         {
           headers: { Authorization: process.env.AUTH_SECRET },
         },

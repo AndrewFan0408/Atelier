@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerList from './AnswerList';
-import Modal from './Modal';
 
-function QuestionItem({ question, questionId }) {
-  console.log('this is my question\n', question);
+function QuestionItem({ question }) {
   return (
     <div>
       <h3>
@@ -16,25 +14,27 @@ function QuestionItem({ question, questionId }) {
   );
 }
 
-// QuestionItem.propTypes = {
-//   question: PropTypes.shape({
-//     review_id: PropTypes.number.isRequired,
-//     rating: PropTypes.number.isRequired,
-//     summary: PropTypes.string.isRequired,
-//     recommend: PropTypes.bool.isRequired,
-//     response: PropTypes.string,
-//     body: PropTypes.string.isRequired,
-//     date: PropTypes.string.isRequired,
-//     reviewer_name: PropTypes.string.isRequired,
-//     helpfulness: PropTypes.number.isRequired,
-//     photos: PropTypes.arrayOf(PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       url: PropTypes.string.isRequired,
-//     })).isRequired,
-//   }).isRequired,
-//   questionId: PropTypes.shape({
-
-//   }),
-// };
+QuestionItem.propTypes = {
+  question: PropTypes.shape({
+    answers: PropTypes.shape({
+      0: PropTypes.shape({
+        body: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        helpfulness: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
+        photos: PropTypes.arrayOf(PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          url: PropTypes.string.isRequired,
+        })).isRequired,
+      }),
+    }),
+    asker_name: PropTypes.string.isRequired,
+    question_body: PropTypes.string.isRequired,
+    question_date: PropTypes.string.isRequired,
+    question_helpfulness: PropTypes.number.isRequired,
+    question_id: PropTypes.number.isRequired,
+    reported: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 export default QuestionItem;

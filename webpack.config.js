@@ -41,11 +41,5 @@ module.exports = {
     ]
   },
   mode: 'development',
-  testPathIgnorePatterns: [
-    '/proxies',
-  ],
-  testEnvironment: 'jsdom',
-  testPathIgnorePatterns: [
-    '/proxies',
-  ],
+
 };

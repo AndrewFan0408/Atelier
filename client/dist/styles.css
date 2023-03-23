@@ -4,7 +4,7 @@
 
 :root {
   --overviewSize: 75vh;
-  --qnaSize: 70vh;
+  --qnaSize: min(70%, 50vh);
   --ratingSize: 75vh;
   --divSize: calc(var(--overviewSize) + var(--qnaSize) + var(--ratingSize) + 4.5vh);
 }
@@ -184,8 +184,8 @@ h5 {
 .qna-search input {
   width: 250px;
 }
-.answer-list {
-  max-height: 260px;
+.questions-list {
+  max-height: calc(60% - 20rem);
   overflow-y: auto;
 }
 .modal {

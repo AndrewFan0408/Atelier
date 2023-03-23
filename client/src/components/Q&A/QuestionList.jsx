@@ -4,7 +4,7 @@ import QuestionItem from './QuestionItem';
 import Modal from './Modal';
 
 function QuestionList({ questions }) {
-  const numberOfQuestions = useSelector((state) => state.numberOfQuestions);
+  const numberOfQuestions = useSelector((state) => state.answerListReducer.numberOfQuestions);
   const productId = useSelector((state) => state.productId);
   const [moreQuestions, setMoreQuestions] = React.useState(false);
   const [query, setQuery] = React.useState('');
@@ -32,27 +32,28 @@ function QuestionList({ questions }) {
   const filteredQuestions = query.length > 2
     ? sortedQuestions.filter((q) => q.question_body.toLowerCase().includes(query.toLowerCase()))
     : sortedQuestions;
-  console.log(filteredQuestions);
   return (
     <div>
       <div className="qna-search">
         <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Have a question? Search for answers…" />
       </div>
-      {filteredQuestions.slice(0, numberOfQuestions).map((question) => (
-        <div key={question.question_id}>
-          <QuestionItem question={question} />
-          <button onClick={() => handleAddAnswerClick(question)} type="button">Add Answer</button>
-          {showModal && (
-          <Modal isAnswer="true" question={question} handleClose={handleClose} />
-          )}
-        </div>
-      ))}
-      {numberOfQuestions < sortedQuestions.length && (
-        <button onClick={handleShowMoreQuestionsClick} type="button">See more Questions</button>
-      )}
-      {moreQuestions && (
-        <button onClick={handleShowLessQuestionsClick} type="button">Collapse Questions</button>
-      )}
+      <div className="questions-list">
+        {filteredQuestions.slice(0, numberOfQuestions).map((question) => (
+          <div key={question.question_id}>
+            <QuestionItem question={question} />
+            <button onClick={() => handleAddAnswerClick(question)} type="button">Add Answer</button>
+            {showModal && (
+            <Modal isAnswer="true" question={question} handleClose={handleClose} />
+            )}
+          </div>
+        ))}
+        {numberOfQuestions < sortedQuestions.length && (
+          <button onClick={handleShowMoreQuestionsClick} type="button">See more Questions</button>
+        )}
+        {moreQuestions && (
+          <button onClick={handleShowLessQuestionsClick} type="button">Collapse Questions</button>
+        )}
+      </div>
     </div>
   );
 }

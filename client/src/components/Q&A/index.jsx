@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import QuestionList from './QuestionList';
 import Modal from './Modal';
 
@@ -13,10 +14,8 @@ function QandA({ product_id }) {
   const handleClose = () => {
     setShowModal(false);
   };
-  console.log(questions);
   return (
     <div id="QandA">
-      <h1>Questions & Answers</h1>
       {questions.length === 0 ? (
         <p>No questions have been submited to this product</p>
       // ADD BUTTON TO QUESTION IMPORT FORM
@@ -29,5 +28,8 @@ function QandA({ product_id }) {
     </div>
   );
 }
+QandA.propTypes = {
+  product_id: PropTypes.number.isRequired,
+};
 
 export default QandA;
