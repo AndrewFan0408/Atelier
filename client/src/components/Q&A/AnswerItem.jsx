@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Modal from './Modal';
 const AnswerItem = ( { answer, question } ) => {
   const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/'
   const date = new Date(answer.date);
