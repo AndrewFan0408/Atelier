@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-
-const AnswerItem = ( { answer } ) => {
+import Modal from './Modal';
+const AnswerItem = ( { answer, question } ) => {
   const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/'
   const date = new Date(answer.date);
   const formattedDate = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
   const [voted, setVoted] = React.useState(false);
-  const [reported, setReported] = React.useState(false)
+  const [reported, setReported] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
+
   const handleHelpfulClick = () => {
     axios.put(url + `${answer.id}` + '/helpful', null, {
       headers: {
@@ -55,6 +57,7 @@ const AnswerItem = ( { answer } ) => {
           <span>Reported</span>
         )}
       </p>
+
     </div>
   )
 }

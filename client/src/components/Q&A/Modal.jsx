@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
+const Modal = ( { isAnswer, handleClose, question } ) => {
   const currentProduct = useSelector(state => state.product);
-  const title = AnswerBoolean ? 'Submit your Answer' : 'Ask Your Question';
-  const subTitle = AnswerBoolean ? `${product.name}: ${question.body}` : `About the ${product.name}`;
+  const title = isAnswer === 'true' ? 'Submit your Answer' : 'Ask Your Question';
+  const subTitle = isAnswer === 'true' ? `${currentProduct.name}: ${question.question_body}` : `About the ${currentProduct.name}`;
   const [answerOrQuestion, setAnswerOrQuestion] = React.useState('');
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -32,6 +32,7 @@ const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
       .catch(err => {
         console.log('err posting question to server\n', err);
       });
+    handleClose();
   }
   const handleAnswerFormSubmit = (e) => {
     e.preventDefault();
@@ -69,13 +70,15 @@ const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
     <div className='modal'>
       <h1>{title}</h1>
       <h3>{subTitle}</h3>
-      {AnswerBoolean ? (
+      {isAnswer === 'true' ? (
         <form onSubmit={handleAnswerFormSubmit}>
           <label>Your Answer? (mandatory)</label>
           <textarea
           value={answerOrQuestion}
           onChange={handleAnswerOrQuestionChange}
           maxLength={1000}
+          placeholder='Why did you like the product or not?'
+
           required
           />
           <label>What is your nickname? (mandatory)</label>
@@ -92,7 +95,7 @@ const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
           value={email}
           onChange={handleEmailChange}
           maxLength={60}
-          placeholder='Why did you like the product or not?'
+          placeholder='example@email.com'
           required
           />
           <p>For authentication reasons, you will not be emailed.</p>
@@ -124,7 +127,7 @@ const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
           value={email}
           onChange={handleEmailChange}
           maxLength={60}
-          placeholder='Why did you like the product or not?'
+          placeholder='example@email.com'
           required
           />
           <p>For authentication reasons, you will not be emailed.</p>
@@ -137,3 +140,5 @@ const Modal = ( {  handleClose, AnswerBoolean, question } ) => {
     </div>
   )
 }
+
+export default Modal;
