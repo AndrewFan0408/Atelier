@@ -1,17 +1,20 @@
 import React from 'react';
 import Overview from './Overview';
-import QandA from './Q&A';
+// import QandA from './Q&A';
 import RandR from './R&R';
-import RelatedItems from './RelatedItems';
+import RelatedProducts from './RelatedItems';
 import logo from "../images/temp.png";
 import profile from "../images/placeholder_logo.png";
 import axios from 'axios'
 import { fetchProducts } from './Fetcher';
 import { useDispatch, useSelector } from 'react-redux';
+import ImageView from './Overview/ImageView';
+import SpecsView from './Overview/SpecsView';
+
 const App = () => {
-  //FILL IN YOUR COMPONENT BELOW
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
@@ -20,6 +23,15 @@ const App = () => {
   React.useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  /*
+    <h2>overview</h2>
+    <h1>Montserrat (h1)</h1>
+    <h3>Playfair Display (h3)</h3>
+    <h5>Roboto (h5)</h5>
+    <p>Lato (p)</p>
+  */
+
   return (
     <>
       <div id="header">
@@ -37,16 +49,12 @@ const App = () => {
       </div>
 
       <div id="overview">
-        <h2>overview</h2>
-        <h1>Montserrat (h1)</h1>
-        <h3>Playfair Display (h3)</h3>
-        <h5>Roboto (h5)</h5>
-        <p>Lato (p)</p>
+        <ImageView />
       </div>
 
       <div id="overview-info">
         <div id="sticky-item">
-          <h2>overview info</h2>
+          <SpecsView />
         </div>
       </div>
 
@@ -55,11 +63,12 @@ const App = () => {
       </div>
 
       <div id="qna">
-        <QandA />
+        <h2>Q&A</h2>
       </div>
 
       <div id="related-items">
         <h2>Related Items</h2>
+        <RelatedProducts />
       </div>
     </>
   )
