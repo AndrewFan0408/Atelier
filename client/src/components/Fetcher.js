@@ -3,23 +3,23 @@ import axios from 'axios';
 export const fetchProducts = () => {
   return dispatch => {
     dispatch({ type: 'FETCH_PRODUCTS_PENDING' });
+
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products?count=1',
     {
       headers: { 'Authorization': process.env.AUTH_SECRET }
     })
       .then(response => {
-        console.log('response');
-        console.log(response.data[0]);
-
         dispatch({
           type: 'FETCH_PRODUCTS_SUCCESS',
           product: response.data[0]
         });
+
         dispatch({
           type: 'GET_O_PRODUCTS_SUCCESS',
           product: response.data[0]
         });
-        return response.data[0].id
+
+        return response.data[0].id;
       })
       .then(productId => {
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${productId}`,
@@ -36,6 +36,7 @@ export const fetchProducts = () => {
           .catch(err => {
             console.log('err fetching questions\n', err)
           });
+
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${productId}/styles`,
         {
           headers: { 'Authorization': process.env.AUTH_SECRET }
@@ -49,6 +50,7 @@ export const fetchProducts = () => {
           .catch(err => {
             console.log('err fetching styles\n', err)
           });
+
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${productId}`,
           {
             headers: { 'Authorization': process.env.AUTH_SECRET }
@@ -62,6 +64,7 @@ export const fetchProducts = () => {
             .catch(err => {
               console.log('err fetching ratings\n', err)
             });
+
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${productId}/related`,
         {
           headers: { 'Authorization': process.env.AUTH_SECRET }
@@ -71,18 +74,19 @@ export const fetchProducts = () => {
               type: 'GET_IDS_SUCCESS',
               relatedIds: response.data,
             });
-            console.log(response);
           })
           .catch(err => {
             console.log('err fetching related items\n', err)
           });
       })
       .catch(error => {
-        console.log('err fetching from server\n', error)
+        console.log('err fetching from server\n', error);
+
         dispatch({
           type: 'FETCH_PRODUCTS_ERROR',
           product: []
         });
+
         dispatch({
           type: 'GET_O_PRODUCTS_FAILURE',
           product: {}

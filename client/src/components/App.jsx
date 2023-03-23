@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const App = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
-  console.log(`products ${products}`);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
