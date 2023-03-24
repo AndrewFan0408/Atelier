@@ -40,5 +40,12 @@ module.exports = {
       }
     ]
   },
-  mode: 'development'
+  mode: 'development',
+  testPathIgnorePatterns: [
+    '/proxies',
+  ],
+  testEnvironment: 'jsdom',
+  testPathIgnorePatterns: [
+    '/proxies',
+  ],
 };

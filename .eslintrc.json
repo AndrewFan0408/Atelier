@@ -1,0 +1,23 @@
+{
+  "extends": ["airbnb"],
+  "ignorePatterns": [
+    "bundle.js"
+  ],
+  "rules": {
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "state"
+        ]
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "plugins": ["jest"]
+}
