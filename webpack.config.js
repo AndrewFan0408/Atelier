@@ -1,23 +1,23 @@
 const path = require('path');
 const webpack = require('webpack');
-require("dotenv").config();
+require('dotenv').config();
 
 module.exports = {
   entry: path.join(__dirname, './client/src/index.jsx'),
   output: {
     path: path.join(__dirname, './client/dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'AUTH_SECRET': JSON.stringify(process.env.AUTH_SECRET)
-      }
-    })
+        AUTH_SECRET: JSON.stringify(process.env.AUTH_SECRET),
+      },
+    }),
   ],
   module: {
     rules: [
@@ -27,25 +27,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loader: 'file-loader',
         options: {
-          name: 'public/icons/[name].[ext]'
-        }
-      }
-    ]
+          name: 'public/icons/[name].[ext]',
+        },
+      },
+    ],
   },
   mode: 'development',
-  testPathIgnorePatterns: [
-    '/proxies',
-  ],
-  testEnvironment: 'jsdom',
-  testPathIgnorePatterns: [
-    '/proxies',
-  ],
 };

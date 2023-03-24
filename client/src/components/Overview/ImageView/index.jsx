@@ -1,11 +1,12 @@
 import React from 'react';
 
-const ImageView = () => {
+function ImageView() {
   return (
     <>
       <p>This is the image sectionx component</p>
+      <p>abide by eslint</p>
     </>
-  )
-};
+  );
+}
 
 export default ImageView;
