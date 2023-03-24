@@ -25,28 +25,60 @@ function SpecsView() {
       setRating(0);
       setStars(0);
     } else {
-      setRating(avg);
+      setRating(num);
       setStars(stars);
     }
   }, [store]);
 
   let output = [];
-  const whole = Math.floor(rating);
+  const whole = Math.floor(star);
   const partial = star - whole;
-  output = [...Array(whole)].map(() => <i className="fa-sharp fa-solid fa-star" />);
+  output = [...Array(whole)].map(() => <li><i className="fa-sharp fa-solid fa-star" /></li>);
+
+  if (partial > 0) {
+    output.push(
+      <li>
+        <div className="fractured_div">
+          <i className="fractured_sol fa-sharp fa-solid fa-star" />
+          <i className="fractured_reg fa-sharp fa-regular fa-star" />
+        </div>
+      </li>,
+    );
+    output = output.concat([...Array(5 - (whole + 1))].map(() => <i className="fa-sharp fa-regular fa-star" />));
+
+    document.documentElement.style.setProperty('--starPercentage', '20%');
+    const r = document.querySelector(':root');
+
+    switch (partial) {
+      case 0.25:
+        r.style.setProperty('--starPercentage', '57%');
+        break;
+      case 0.50:
+        r.style.setProperty('--starPercentage', '47%');
+        break;
+      case 0.75:
+        r.style.setProperty('--starPercentage', '38%');
+        break;
+      default:
+        r.style.setProperty('--starPercentage', '100%');
+        break;
+    }
+  } else {
+    output = output.concat([...Array(5 - (whole))].map(() => <li><i className="fa-sharp fa-regular fa-star" /></li>));
+  }
+  console.log(output);
 
   return (
     <>
-      <p>This is the image List section component</p>
-      <div>
-        <p>{star}</p>
-        <div id="review_stars">
-          <p>placeholder</p>
+      <div id="review_stars">
+        <ol className="star_list">
           {output.map((element) => element)}
-        </div>
-        <i className="fa-sharp fa-regular fa-star" />
-        <i className="fa-sharp fa-solid fa-star" />
+        </ol>
+        <p>
+          {star} out of 5 stars ({rating} reviews)
+        </p>
       </div>
+      <p>category</p>
     </>
   );
 }

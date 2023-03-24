@@ -7,11 +7,15 @@
   --qnaSize: 70vh;
   --ratingSize: 75vh;
   --divSize: calc(var(--overviewSize) + var(--qnaSize) + var(--ratingSize) + 4.5vh);
+  --starPercentage: 60%;
+  --color: black;
+  --bg-color: white;
 }
 
 html, body {
-  color: black;
+  color: var(--color);
   min-width:900px;
+  var(--bg-color);
 }
 
 h1 {
@@ -67,7 +71,7 @@ h5 {
   width: 50px;
   height: 35px;
   text-align: center;
-  background-color: white;
+  background-color: var(--bg-color);
 }
 
 .fa-cart-shopping, .fa-user, #searchStore {
@@ -131,10 +135,52 @@ h5 {
   font-size: 50px;
 }
 
+.star_list {
+  list-style-type: none;
+}
+
+.star_list > li {
+  display: inline-block;
+}
+
+.fa-star {
+  font-size: 2em;
+  padding: 5px;
+}
+
+.fractured_div {
+  position: relative;
+}
+
+.fractured_sol {
+  position: relative;
+  color: var(--color);
+  left: 5%;
+  bottom: 2px;
+  font-size: 1.7em;
+}
+
+.fractured_reg {
+  color: var(--color);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.fractured_sol:after {
+  content: "";
+  position: absolute;
+  background: var(--bg-color);
+
+  right: 0;
+  bottom: 0;
+
+  height: 100%;
+  width: var(--starPercentage);
+}
 /* _________________________ */
 /*      ratings-review       */
 /* _________________________ */
-
 
 #ratings-review {
   display: inline-block;
