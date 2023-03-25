@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // 40435, 40699
 
-export const fetchProducts = () => {
+const fetchProducts = () => {
   return (dispatch) => {
     axios.get(
       'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40699',
@@ -104,5 +104,7 @@ export const fetchProducts = () => {
           product: {},
         });
       });
-    });
+  };
 };
+
+export default fetchProducts;
