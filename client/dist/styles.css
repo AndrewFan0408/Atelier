@@ -8,12 +8,17 @@
   --overviewSize: 75vh;
   --qnaSize: min(0, 50vh);
   --ratingSize: 75vh;
-  --divSize: calc(var(--overviewSize) + var(--qnaSize) + var(--ratingSize) + 4.5vh);
+  --divSize: calc(var(--overviewSize) + 109vh + var(--ratingSize) + 4vh);
+  --starPercentage: 60%;
+  --color: black;
+  --bg-color: white;
 }
 
 html, body {
-  color: black;
-  min-width:900px;
+  color: var(--color);
+  min-width:1200px;
+  min-height: 1200px;
+  background-color: var(--bg-color);
 }
 
 h1 {
@@ -69,7 +74,7 @@ h5 {
   width: 50px;
   height: 35px;
   text-align: center;
-  background-color: white;
+  background-color: var(--bg-color);
 }
 
 .fa-cart-shopping, .fa-user, #searchStore {
@@ -115,7 +120,7 @@ h5 {
   float: right;
 
   width: 39%;
-  height: var(--divSize);
+  min-height: var(--divSize);
   margin-top: 5px;
 }
 
@@ -133,10 +138,86 @@ h5 {
   font-size: 50px;
 }
 
+.star_list {
+  list-style-type: none;
+}
+
+.star_list > li {
+  display: inline-block;
+}
+
+.fa-star {
+  font-size: 2em;
+  padding: 5px;
+}
+
+.fractured_div {
+  position: relative;
+}
+
+.fractured_sol {
+  position: relative;
+  color: var(--color);
+  left: 5%;
+  bottom: 2px;
+  font-size: 1.7em;
+}
+
+.fractured_reg {
+  color: var(--color);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.fractured_sol:after {
+  content: "";
+  position: absolute;
+  background: var(--bg-color);
+
+  right: 0;
+  bottom: 0;
+
+  height: 100%;
+  width: var(--starPercentage);
+}
+
+.thumbnails {
+  border: 3px solid green;
+  position: absolute;
+  padding: 5px;
+  width: 240px;
+}
+
+.thumbnailInd {
+  display: inline-block;
+  padding: 5px;
+  width: 20%;
+}
+
+.thumbnailInd > p {
+  font-size: 10px;
+  text-align: center;
+}
+
+.thumbnailImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid black;
+  display: inline-block;
+  position: relative;
+
+  left: 0;
+}
+
+.thumbnailInd:hover {
+  background-color: azure;
+}
+
 /* _________________________ */
 /*      ratings-review       */
 /* _________________________ */
-
 
 #ratings-review {
   display: inline-block;
@@ -440,7 +521,7 @@ h5 {
 
   /* DO NOT change height from here, go to root */
   width: 100%;
-  height: 30vh;
+  height: 40vh;
 
   margin-left: -3px;
   margin-top: 5px;

@@ -2,10 +2,12 @@ import axios from 'axios';
 
 /* eslint arrow-body-style: "off", import/prefer-default-export: "off" */
 
-export const fetchProducts = () => {
+// 40435, 40699
+
+const fetchProducts = () => {
   return (dispatch) => {
     axios.get(
-      'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40435',
+      'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40699',
       {
         headers: { Authorization: process.env.AUTH_SECRET },
       },
@@ -102,5 +104,7 @@ export const fetchProducts = () => {
           product: {},
         });
       });
-    });
+  };
 };
+
+export default fetchProducts;

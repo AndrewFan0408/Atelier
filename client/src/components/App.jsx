@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import Overview from './Overview';
 import QandA from './Q&A';
 import RelatedProducts from './RelatedItems';
 import logo from '../images/temp.png';
-import profile from '../images/placeholder_logo.png';
 import fetchProducts from './Fetcher';
 import ImageView from './Overview/ImageView';
 import SpecsView from './Overview/SpecsView';
@@ -13,6 +10,15 @@ import SpecsView from './Overview/SpecsView';
 function App() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+
+  const [image, setImage] = React.useState('');
+
+  const imgFunc = (input) => {
+    if (input === undefined || input.photos === undefined) {
+      return;
+    }
+    setImage(input.photos[0].thumbnail_url);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +40,7 @@ function App() {
   return (
     <>
       <div id="header">
-        <img id="brand-title" src={logo} width={100} height={50} />
+        <img id="brand-title" src={logo} width={100} height={50} alt="company title" />
         <div id="header-right">
           <form id="searchStore" onSubmit={handleSubmit}>
             <label>
@@ -48,12 +54,12 @@ function App() {
       </div>
 
       <div id="overview">
-        <ImageView />
+        <ImageView image={image} />
       </div>
 
       <div id="overview-info">
         <div id="sticky-item">
-          <SpecsView />
+          <SpecsView imgFunc={imgFunc} />
         </div>
       </div>
 
