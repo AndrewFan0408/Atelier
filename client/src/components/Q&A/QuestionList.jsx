@@ -29,7 +29,7 @@ const QuestionList = ( { questions } ) => {
   }
   const sortedQuestions = [...questions].sort((a, b) => b.helpfulness - a.helpfulness);
   const filteredQuestions = query.length > 2 ? sortedQuestions.filter(question => question.question_body.toLowerCase().includes(query.toLowerCase())) : sortedQuestions;
-  console.log(filteredQuestions)
+  // console.log(filteredQuestions)
   return (
     <div>
       <div className='qna-search'>

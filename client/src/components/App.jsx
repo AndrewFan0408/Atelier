@@ -34,7 +34,7 @@ function App() {
   return (
     <>
       <div id="header">
-        <img id="brand-title" src={logo} width={100} height={50} />
+        <img id="brand-title" src={logo} width={100} height={50} alt="company title" />
         <div id="header-right">
           <form id="searchStore" onSubmit={handleSubmit}>
             <label>

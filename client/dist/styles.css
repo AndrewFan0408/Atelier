@@ -117,7 +117,7 @@ h5 {
   float: right;
 
   width: 39%;
-  height: var(--divSize);
+  min-height: var(--divSize);
   margin-top: 5px;
 }
 
@@ -178,6 +178,39 @@ h5 {
   height: 100%;
   width: var(--starPercentage);
 }
+
+.thumbnails {
+  border: 3px solid green;
+  position: absolute;
+  padding: 5px;
+  width: 240px;
+}
+
+.thumbnailInd {
+  display: inline-block;
+  padding: 5px;
+  width: 20%;
+}
+
+.thumbnailInd > p {
+  font-size: 10px;
+  text-align: center;
+}
+
+.thumbnailImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+
+  left: 0;
+}
+
+.thumbnailInd:hover {
+  background-color: azure;
+}
+
 /* _________________________ */
 /*      ratings-review       */
 /* _________________________ */
