@@ -5,11 +5,13 @@ import AnswerList from './AnswerList';
 function QuestionItem({ question }) {
   return (
     <div>
-      <h3>
-        Q:
-        {question.question_body}
-      </h3>
-      <AnswerList answers={question.answers} question={question} />
+      <div className="question-container">
+        <h3 className="question-literal">Q:</h3>
+        <p className="question-body">{question.question_body}</p>
+      </div>
+      <div className="answer-list-container">
+        <AnswerList answers={question.answers} question={question} />
+      </div>
     </div>
   );
 }

@@ -1,10 +1,12 @@
+
+
 /* _________________________ */
 /*          Overall          */
 /* _________________________ */
 
 :root {
   --overviewSize: 75vh;
-  --qnaSize: min(70%, 50vh);
+  --qnaSize: min(0, 50vh);
   --ratingSize: 75vh;
   --divSize: calc(var(--overviewSize) + var(--qnaSize) + var(--ratingSize) + 4.5vh);
 }
@@ -163,13 +165,11 @@ h5 {
 
 
 #qna {
-  display: inline-block;
-
   padding-top: 5px;
   border: 3px solid blue;
 
   /* DO NOT change height from here, go to root */
-  width: 60%;
+  max-width: 60%;
   max-height: var(--qnaSize);
 
   margin-left: -3px;
@@ -181,12 +181,191 @@ h5 {
   font-size: 50px;
 }
 
-.qna-search input {
-  width: 250px;
+.qna-search input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 .questions-list {
   max-height: calc(100vh - 150px);
   overflow-y: auto;
+}
+.questions-list button {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.add-question-button {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 100%;
+}
+.more-questions {
+  width: 50%;
+  margin-left: 25%;
+}
+.answer-item-container {
+  border-bottom: 5px solid #00702f;
+}
+.question-container,
+.answer-container {
+  padding-bottom: 0px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 2px;
+  text-align: center;
+  align-items: center;
+}
+.question-container {
+  border-bottom: 20px solid #9c0964;
+}
+.question-literal,
+.question-body {
+  display: inline;
+}
+.question-body {
+  font-size: 25px;
+}
+.additional-info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.question-literal,
+.answer-literal {
+  padding-right: 10px;
+  font-size: 50px;
+  font-weight: bold;
+  align-self: start;
+}
+.answer-literal,
+.answer-body {
+  display: inline;
+}
+.helpful-container {
+  display: inline-block;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+}
+.answer-body {
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Roboto, sans-serif';
+}
+
+.helpful-increment-container,
+.report-link-container {
+  display: inline;
+  vertical-align: middle;
+}
+.helpful-link {
+  background-color: #00702f;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.report-link {
+  background-color: #c00000;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.answer-literal {
+  padding-right: 10px;
+}
+.helpful-container button,
+.report-link-container button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #007bff;
+  transition: color 0.2s ease-in-out;
+}
+.answer-list-container {
+  border-bottom: 10px solid #005a24;
+}
+.answer-list-container button {
+  margin-right: 10px;
+}
+.answer-list-buttons {
+  display: flex;
+}
+.answer-list-buttons button:first-child {
+  flex-basis: 50%;
+}
+
+.answer-list-buttons button:last-child {
+  flex-basis: 50%;
+}
+.answer-list-container .answer-item-container:last-child {
+  border-bottom: none;
+}
+
+
+.answer-seller-info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.answer-seller-info p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.answer-seller-info strong {
+  font-weight: 600;
+  color: #007185;
+  margin-left: 5px;
+}
+
+
+
+.answer-seller-info:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.modal form {
+  background-color: white;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 .modal {
   position: fixed;
@@ -200,28 +379,21 @@ h5 {
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 9999;
 }
-
-.modal form {
-  background-color: white;
-  padding: 20px;
-  max-width: 600px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+.modal h1, .modal h3 {
+  margin: 0;
+  text-align: center;
 }
-
 .modal h1 {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-top   : 10px;
 }
 
 .modal h3 {
   font-size: 18px;
   margin-bottom: 20px;
+  padding-bottom: 10px;
 }
-
 .modal label {
   display: block;
   font-weight: bold;

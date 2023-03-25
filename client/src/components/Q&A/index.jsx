@@ -21,7 +21,7 @@ function QandA({ product_id }) {
       // ADD BUTTON TO QUESTION IMPORT FORM
       )
         : <QuestionList questions={questions} />}
-      <button onClick={handleAddQuestion} type="button">Add A Question</button>
+      <button onClick={handleAddQuestion} type="button" className="add-question-button">Add A Question</button>
       {showModal && (
       <Modal isAnswer="false" handleClose={handleClose} />
       )}
