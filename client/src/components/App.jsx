@@ -14,6 +14,15 @@ function App() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
+  const [image, setImage] = React.useState('');
+
+  const imgFunc = (input) => {
+    if (input === undefined || input.photos === undefined) {
+      return;
+    }
+    setImage(input.photos[0].thumbnail_url);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
@@ -48,12 +57,12 @@ function App() {
       </div>
 
       <div id="overview">
-        <ImageView />
+        <ImageView image={image} />
       </div>
 
       <div id="overview-info">
         <div id="sticky-item">
-          <SpecsView />
+          <SpecsView imgFunc={imgFunc} />
         </div>
       </div>
 
