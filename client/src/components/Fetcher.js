@@ -102,5 +102,5 @@ export const fetchProducts = () => {
           product: {},
         });
       });
-  };
+    });
 };

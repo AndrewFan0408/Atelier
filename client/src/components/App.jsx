@@ -6,7 +6,7 @@ import QandA from './Q&A';
 import RelatedProducts from './RelatedItems';
 import logo from '../images/temp.png';
 import profile from '../images/placeholder_logo.png';
-import { fetchProducts } from './Fetcher';
+import fetchProducts from './Fetcher';
 import ImageView from './Overview/ImageView';
 import SpecsView from './Overview/SpecsView';
 

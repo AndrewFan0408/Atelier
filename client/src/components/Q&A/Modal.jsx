@@ -41,7 +41,8 @@ function Modal({ isAnswer, handleClose, question }) {
       setError('Email not in correct format');
       return;
     }
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question.id}/answers`, {
+    console.log(question);
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question.question_id}/answers`, {
       body: answerOrQuestion,
       name,
       email,
@@ -52,11 +53,12 @@ function Modal({ isAnswer, handleClose, question }) {
       },
     })
       .then((response) => {
-        console.log('sucessfully posted question to server');
+        console.log('sucessfully posted answer to server');
       })
       .catch((err) => {
         console.log('err posting question to server\n', err);
       });
+    handleClose();
   };
   const handleAnswerOrQuestionChange = (e) => {
     setAnswerOrQuestion(e.target.value);
@@ -69,10 +71,10 @@ function Modal({ isAnswer, handleClose, question }) {
   };
   return (
     <div className="modal" data-testid="modal">
-      <h1>{title}</h1>
-      <h3>{subTitle}</h3>
       {isAnswer === 'true' ? (
         <form onSubmit={handleAnswerFormSubmit} data-testid="content1">
+          <h1>{title}</h1>
+          <h3>{subTitle}</h3>
           <label>Your Answer? (mandatory)</label>
           <textarea
             value={answerOrQuestion}
@@ -99,13 +101,15 @@ function Modal({ isAnswer, handleClose, question }) {
             required
           />
           <p>For authentication reasons, you will not be emailed.</p>
-          <button type="submit">Submit Question</button>
+          <button type="submit">Submit Answer</button>
           {error && (
             <p>{error}</p>
           )}
         </form>
       ) : (
         <form onSubmit={handleQuestionFormSubmit} data-testid="content2">
+          <h1>{title}</h1>
+          <h5>{subTitle}</h5>
           <label>Your Question? (mandatory)</label>
           <textarea
             value={question}
