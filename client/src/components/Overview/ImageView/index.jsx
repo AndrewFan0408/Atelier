@@ -12,7 +12,7 @@ function ImageView({ image }) {
 
   return (
     <>
-      <h3>"{motto}"</h3>
+      <h5>"{motto}"</h5>
       <img src={image} alt="product" />
     </>
   );

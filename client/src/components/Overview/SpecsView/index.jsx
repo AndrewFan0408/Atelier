@@ -9,6 +9,8 @@ function SpecsView({ imgFunc }) {
   const [category, setCategory] = React.useState();
   const [name, setName] = React.useState();
   const [overview, setOverview] = React.useState();
+  const [discount, setDiscount] = React.useState();
+  const [price, setPrice] = React.useState();
   // const [image, setImage] = React.useState('');
 
   React.useEffect(() => {
@@ -29,11 +31,20 @@ function SpecsView({ imgFunc }) {
 
   return (
     <>
-      <h1>{name}</h1>
-      <h5>{category}</h5>
+      <p className="category">{category}</p>
       <Stars />
+      <div className="product-big">
+        <h3 className="product-name">{name}</h3>
+        <h1 className="sliced-through">
+          {discount}
+        </h1>
+        <h1 id="price">
+          $
+          {price}
+        </h1>
+      </div>
       <p>{overview}</p>
-      <StyleSelector imgFunc={imgFunc} />
+      <StyleSelector imgFunc={imgFunc} setPrice={setPrice} setDiscount={setDiscount} />
       {/* <img src={image} alt="asdf" /> */}
     </>
   );

@@ -22,7 +22,6 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('clicked');
   };
 
   React.useEffect(() => {
