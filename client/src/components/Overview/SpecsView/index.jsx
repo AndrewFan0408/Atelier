@@ -43,7 +43,9 @@ function SpecsView({ imgFunc }) {
           {price}
         </h1>
       </div>
-      <p>{overview}</p>
+      <div className="overview-text">
+        <p>{overview}</p>
+      </div>
       <StyleSelector imgFunc={imgFunc} setPrice={setPrice} setDiscount={setDiscount} />
       {/* <img src={image} alt="asdf" /> */}
     </>

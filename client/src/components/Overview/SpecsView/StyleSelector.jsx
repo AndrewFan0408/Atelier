@@ -23,11 +23,11 @@ function StyleSelector({ imgFunc, setPrice, setDiscount }) {
       if (cStyle.sale_price !== null) {
         setDiscount(`$${cStyle.original_price}`);
         setPrice(cStyle.sale_price);
-        document.querySelector('#price').style.setProperty('padding-left', '7vw');
+        document.querySelector('#price').style.setProperty('padding-left', '7.5vw');
       } else {
         setDiscount();
         setPrice(cStyle.original_price);
-        document.querySelector('#price').style.setProperty('padding-left', '1vw');
+        document.querySelector('#price').style.setProperty('padding-left', '1.5vw');
       }
     }
   }, [cStyle]);
