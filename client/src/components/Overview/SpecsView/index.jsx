@@ -12,7 +12,6 @@ function SpecsView({ imgFunc }) {
   const [discount, setDiscount] = React.useState();
   const [price, setPrice] = React.useState();
   const [id, setId] = React.useState();
-  // const [image, setImage] = React.useState('');
 
   React.useEffect(() => {
     setCategory(store.product.category);
@@ -20,8 +19,6 @@ function SpecsView({ imgFunc }) {
     setOverview(store.product.description);
     setId(store.product.id);
   }, [store]);
-
-  console.log(store);
 
   // const imgFunc = (input) => {
   //   if (input === undefined || input.photos === undefined) {

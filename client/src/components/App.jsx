@@ -22,7 +22,6 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`e is ${formInput}`);
     dispatch(fetchProducts(formInput, true));
   };
 

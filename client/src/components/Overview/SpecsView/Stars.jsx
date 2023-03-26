@@ -64,9 +64,8 @@ function Stars() {
         break;
     }
   } else {
-    output = output.concat([...Array(5 - (whole))].map(() => <li><i className="regular-star fa-sharp fa-regular fa-star" /></li>));
+    output = output.concat([...Array(5 - (whole))].map((element, index, list) => <li><i className="regular-star fa-sharp fa-regular fa-star" /></li>));
   }
-  console.log(output);
 
   if (rating === 0) {
     return (

@@ -11,14 +11,11 @@ function StyleSelector({ imgFunc, setPrice, setDiscount }) {
   React.useEffect(() => {
     setImgArr(store.styles);
     setCStyle(store.styles[0]);
-    console.log(cStyle);
   }, [store]);
 
   React.useEffect(() => {
     if (cStyle !== undefined) {
       imgFunc(cStyle);
-      console.log('cStyle');
-      console.log(cStyle.sale_price);
 
       if (cStyle.sale_price !== null) {
         setDiscount(`$${cStyle.original_price}`);
