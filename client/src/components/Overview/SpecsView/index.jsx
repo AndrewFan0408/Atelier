@@ -11,12 +11,14 @@ function SpecsView({ imgFunc }) {
   const [overview, setOverview] = React.useState();
   const [discount, setDiscount] = React.useState();
   const [price, setPrice] = React.useState();
+  const [id, setId] = React.useState();
   // const [image, setImage] = React.useState('');
 
   React.useEffect(() => {
     setCategory(store.product.category);
     setName(store.product.name);
     setOverview(store.product.description);
+    setId(store.product.id);
   }, [store]);
 
   console.log(store);
@@ -28,6 +30,9 @@ function SpecsView({ imgFunc }) {
   //   setImage(input.photos[0].thumbnail_url);
   //   bigImg(image);
   // };
+
+  const myURL = new URL(`http://localhost:8080/?_name=${id}`);
+  console.log(myURL.href);
 
   return (
     <>
@@ -48,6 +53,9 @@ function SpecsView({ imgFunc }) {
       </div>
       <StyleSelector imgFunc={imgFunc} setPrice={setPrice} setDiscount={setDiscount} />
       {/* <img src={image} alt="asdf" /> */}
+      <a href={`https://www.facebook.com/sharer/sharer.php?u=localhost:8080/?${myURL.href}`} target="_blank" rel="noreferrer">
+        Share on Facebook
+      </a>
     </>
   );
 }
