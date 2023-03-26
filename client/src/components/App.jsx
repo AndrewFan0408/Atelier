@@ -9,9 +9,9 @@ import SpecsView from './Overview/SpecsView';
 
 function App() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
 
   const [image, setImage] = React.useState('');
+  const [formInput, setFormInput] = React.useState('');
 
   const imgFunc = (input) => {
     if (input === undefined || input.photos === undefined) {
@@ -22,6 +22,12 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(`e is ${formInput}`);
+    dispatch(fetchProducts(formInput, true));
+  };
+
+  const handleChange = (evt) => {
+    setFormInput(evt.target.value);
   };
 
   React.useEffect(() => {
@@ -43,7 +49,7 @@ function App() {
         <div id="header-right">
           <form id="searchStore" onSubmit={handleSubmit}>
             <label>
-              <input type="text" name="search-store" />
+              <input type="text" name="search-store" onChange={(e) => handleChange(e)} />
             </label>
             <input type="submit" />
           </form>

@@ -121,9 +121,8 @@ h5 {
 
 .motto {
   position: relative;
-  height: 10%;
-  width: 100%;
-
+  width: 70%;
+  height: 20%;
 }
 
 .motto > h5 {
@@ -131,8 +130,6 @@ h5 {
   font-size: 30px;
   position: absolute;
   top: -1em;
-  left: 16vw;
-  text-align: center;
 }
 
 /* _________________________ */

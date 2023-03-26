@@ -13,7 +13,11 @@ function ImageView({ image }) {
   return (
     <>
       <div className="motto">
-        <h5>"{motto}"</h5>
+        <h5>
+          &quot;
+          {motto}
+          &quot;
+        </h5>
       </div>
       <img src={image} alt="product" />
     </>
