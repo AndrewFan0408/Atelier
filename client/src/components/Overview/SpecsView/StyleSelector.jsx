@@ -3,19 +3,30 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 /* eslint-disable-next-line react/style-prop-object */
 
-function StyleSelector({ imgFunc }) {
+function StyleSelector({ imgFunc, setPrice, setDiscount }) {
   const store = useSelector((state) => state.overviewReducer);
   const [imgArr, setImgArr] = React.useState([]);
-  const [cStyle, setCStyle] = React.useState({});
+  const [cStyle, setCStyle] = React.useState();
 
   React.useEffect(() => {
     setImgArr(store.styles);
     setCStyle(store.styles[0]);
-    console.log(cStyle);
   }, [store]);
 
   React.useEffect(() => {
-    imgFunc(cStyle);
+    if (cStyle !== undefined) {
+      imgFunc(cStyle);
+
+      if (cStyle.sale_price !== null) {
+        setDiscount(`$${cStyle.original_price}`);
+        setPrice(cStyle.sale_price);
+        document.querySelector('#price').style.setProperty('padding-left', '7.5vw');
+      } else {
+        setDiscount();
+        setPrice(cStyle.original_price);
+        document.querySelector('#price').style.setProperty('padding-left', '1.5vw');
+      }
+    }
   }, [cStyle]);
 
   const clickHandler = (input) => setCStyle(input);
@@ -34,6 +45,8 @@ function StyleSelector({ imgFunc }) {
 
 StyleSelector.propTypes = {
   imgFunc: PropTypes.func.isRequired,
+  setPrice: PropTypes.func.isRequired,
+  setDiscount: PropTypes.func.isRequired,
 };
 
 export default StyleSelector;
