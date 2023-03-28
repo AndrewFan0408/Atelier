@@ -17,7 +17,7 @@ function SpecsView({ imgFunc }) {
     setOverview(store.product.description);
   }, [store]);
 
-  console.log(store);
+  console.log('inside overview', store);
 
   // const imgFunc = (input) => {
   //   if (input === undefined || input.photos === undefined) {

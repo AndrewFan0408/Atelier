@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components';
-import itemContext from './itemContext';
+// import itemContext from './itemContext';
 import RelatedItemCard from './RelatedItemCard';
 
 const RelatedItemsContainer = styled.div`

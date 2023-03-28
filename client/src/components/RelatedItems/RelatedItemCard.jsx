@@ -47,7 +47,7 @@ const OutlinedStar = styled.i`
 `;
 
 const RelatedItemCard = ({ product }) => {
-  const { category, name, default_price, rating, numReviews, imageUrl } = product;
+  const { id, category, name, default_price, rating, numReviews, imageUrl } = product;
 
   const renderStars = () => {
     const ratingFloor = Math.floor(rating);
@@ -73,7 +73,7 @@ const RelatedItemCard = ({ product }) => {
 
   return (
     <CardContainer>
-      <a href={`/products/${product.id}`}>
+      <a href={`/products/${id}`}>
         <CardImage src={imageUrl} alt={`${category} - ${name}`} />
       </a>
       <CardInfo>

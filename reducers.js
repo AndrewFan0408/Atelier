@@ -17,7 +17,9 @@ const ov_InitialState = {
 };
 
 const rl_InitialState = {
-  relatedIds: [],
+  relatedItems: [],
+  product: {},
+  ratings: {},
 };
 
 const answerListReducer = (state = al_InitialState, action) => {
