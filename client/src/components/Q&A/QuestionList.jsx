@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import QuestionItem from './QuestionItem';
 
-
 function QuestionList({ questions }) {
   const numberOfQuestions = useSelector((state) => state.answerListReducer.numberOfQuestions);
-  const productId = useSelector((state) => state.productId);
   const [moreQuestions, setMoreQuestions] = React.useState(false);
   const [query, setQuery] = React.useState('');
   const dispatch = useDispatch();

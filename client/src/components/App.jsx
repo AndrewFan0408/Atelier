@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import QandA from './Q&A';
 import RelatedProducts from './RelatedItems';
 import logo from '../images/temp.png';
@@ -9,9 +9,9 @@ import SpecsView from './Overview/SpecsView';
 
 function App() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
 
   const [image, setImage] = React.useState('');
+  const [formInput, setFormInput] = React.useState('');
 
   const imgFunc = (input) => {
     if (input === undefined || input.photos === undefined) {
@@ -22,20 +22,16 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('clicked');
+    dispatch(fetchProducts(formInput, true));
+  };
+
+  const handleChange = (evt) => {
+    setFormInput(evt.target.value);
   };
 
   React.useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-
-  /*
-    <h2>overview</h2>
-    <h1>Montserrat (h1)</h1>
-    <h3>Playfair Display (h3)</h3>
-    <h5>Roboto (h5)</h5>
-    <p>Lato (p)</p>
-  */
 
   return (
     <>
@@ -43,8 +39,8 @@ function App() {
         <img id="brand-title" src={logo} width={100} height={50} alt="company title" />
         <div id="header-right">
           <form id="searchStore" onSubmit={handleSubmit}>
-            <label>
-              <input type="text" name="search-store" />
+            <label htmlFor="search-store">
+              <input id="search-store" type="text" name="search-store" onChange={(e) => handleChange(e)} />
             </label>
             <input type="submit" />
           </form>
