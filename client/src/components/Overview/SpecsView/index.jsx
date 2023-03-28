@@ -20,6 +20,8 @@ function SpecsView({ imgFunc }) {
     setId(store.product.id);
   }, [store]);
 
+  console.log(store);
+
   // const imgFunc = (input) => {
   //   if (input === undefined || input.photos === undefined) {
   //     return;
