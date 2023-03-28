@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import QandA from './Q&A';
 import RelatedProducts from './RelatedItems';
 import logo from '../images/temp.png';
@@ -33,22 +33,14 @@ function App() {
     dispatch(fetchProducts());
   }, []);
 
-  /*
-    <h2>overview</h2>
-    <h1>Montserrat (h1)</h1>
-    <h3>Playfair Display (h3)</h3>
-    <h5>Roboto (h5)</h5>
-    <p>Lato (p)</p>
-  */
-
   return (
     <>
       <div id="header">
         <img id="brand-title" src={logo} width={100} height={50} alt="company title" />
         <div id="header-right">
           <form id="searchStore" onSubmit={handleSubmit}>
-            <label>
-              <input type="text" name="search-store" onChange={(e) => handleChange(e)} />
+            <label htmlFor="search-store">
+              <input id="search-store" type="text" name="search-store" onChange={(e) => handleChange(e)} />
             </label>
             <input type="submit" />
           </form>
