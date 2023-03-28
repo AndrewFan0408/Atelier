@@ -44,7 +44,7 @@ function Stars() {
         </div>
       </li>,
     );
-    output = output.concat([...Array(5 - (whole + 1))].map(() => <i className="fa-sharp fa-regular fa-star" />));
+    output = output.concat([...Array(5 - (whole + 1))].map(() => <i className="regular-star fa-sharp fa-regular fa-star" />));
 
     document.documentElement.style.setProperty('--starPercentage', '20%');
     const r = document.querySelector(':root');
@@ -64,9 +64,8 @@ function Stars() {
         break;
     }
   } else {
-    output = output.concat([...Array(5 - (whole))].map(() => <li><i className="fa-sharp fa-regular fa-star" /></li>));
+    output = output.concat([...Array(5 - (whole))].map((element, index, list) => <li><i className="regular-star fa-sharp fa-regular fa-star" /></li>));
   }
-  console.log(output);
 
   if (rating === 0) {
     return (
@@ -74,22 +73,25 @@ function Stars() {
     );
   }
 
+  /*
+    {star}
+    {' '}
+    out of 5 stars
+  */
+
   return (
-    <>
+    <div className="stars-section">
       <div id="review_stars">
         <ol className="star_list">
           {output.map((element) => element)}
         </ol>
       </div>
-      <p>
-        {star}
-        {' '}
-        out of 5 stars (
+      <p className="review_info">
         {rating}
         {' '}
-        reviews)
+        review(s)
       </p>
-    </>
+    </div>
   );
 }
 

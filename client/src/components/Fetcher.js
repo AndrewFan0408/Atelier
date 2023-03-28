@@ -2,12 +2,27 @@ import axios from 'axios';
 
 /* eslint arrow-body-style: "off", import/prefer-default-export: "off" */
 
-// 40435, 40699
+// 40435, 40699, 40678
 
-const fetchProducts = () => {
+const fetchProducts = (input = 40435, bar = false) => {
+  let inputName;
+
+  if (bar === false) {
+    const queryString = window.location.search;
+
+    const parametersURL = new URLSearchParams(queryString);
+    inputName = parametersURL.get('_name');
+
+    if (inputName === null) {
+      inputName = input;
+    }
+  } else {
+    inputName = input;
+  }
+
   return (dispatch) => {
     axios.get(
-      'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40699',
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${inputName}`,
       {
         headers: { Authorization: process.env.AUTH_SECRET },
       },
