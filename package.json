@@ -7,13 +7,13 @@
     "client": "webpack --watch",
     "server": "nodemon server/index.js",
     "dev": "npm run client & npm run server",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
     "url": "AMYVify/Atelier "
   },
-  "author": "Yeong, Vaughn, Mev, Andrew",
+  "author": "Yeong, Vaughn, Mev",
   "license": "ISC",
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
