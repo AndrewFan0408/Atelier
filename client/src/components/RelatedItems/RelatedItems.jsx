@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import RelatedItemCard from './RelatedItemCard';
 import axios from 'axios';
+import RelatedItemCard from './RelatedItemCard';
 
 const RelatedItemsContainer = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const RelatedItemsContainer = styled.div`
   }
 `;
 
-const RelatedItems = ({ relatedIds, id }) => {
+function RelatedItems({ relatedIds, id }) {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   // const [prodDetail, setProdDetail] = useState({});
   // const [prodStyle, setProdStyle] = useState([]);
@@ -51,26 +51,24 @@ const RelatedItems = ({ relatedIds, id }) => {
 
   return (
     <div>
-        <>
-        <RelatedItemsContainer>
-          {currentProductIndex > 0 && (
-            <button className="prevButton" onClick={handlePrevious}>{'\u2190'}</button>
-          )}
-          {relatedIds.map(id => (
-            <RelatedItemCard productId={id} key={id}/>
-          ))}
-          {currentProductIndex < relatedIds.length - 1 && (
-            <button className="nextButton" onClick={handleNext}>{'\u2192'}</button>
-          )}
-        </RelatedItemsContainer>
-        </>
+      <RelatedItemsContainer>
+        {currentProductIndex > 0 && (
+        <button className="prevButton" onClick={handlePrevious}>{'\u2190'}</button>
+        )}
+        {relatedIds.map((id) => (
+          <RelatedItemCard productId={id} key={id} />
+        ))}
+        {currentProductIndex < relatedIds.length - 1 && (
+        <button className="nextButton" onClick={handleNext}>{'\u2192'}</button>
+        )}
+      </RelatedItemsContainer>
     </div>
   );
-};
+}
 
 RelatedItems.propTypes = {
   relatedIds: PropTypes.array.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
 };
 
 export default RelatedItems;
