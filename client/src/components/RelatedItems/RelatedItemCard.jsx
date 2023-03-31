@@ -72,54 +72,54 @@ const OutlinedStar = styled.i`
   color: gray;
 `;
 
-const RelatedItemCard = ({ productId }) => {
+function RelatedItemCard({ productId }) {
   // const { id, category, name, default_price, rating, numReviews, imageUrl } = product;
 
   console.log('inside relatedItemCard: ', productId);
 
-  const renderStars = () => {
-    const ratingFloor = Math.floor(rating);
-    const ratingDecimal = rating - ratingFloor;
-    const solidStars = ratingFloor;
-    const outlinedStars = Math.round(ratingDecimal * 4);
+  // const renderStars = () => {
+  //   const ratingFloor = Math.floor(rating);
+  //   const ratingDecimal = rating - ratingFloor;
+  //   const solidStars = ratingFloor;
+  //   const outlinedStars = Math.round(ratingDecimal * 4);
 
-    const stars = [];
+  //   const stars = [];
 
-    for (let i = 0; i < 5; i++) {
-      if (i < solidStars) {
-        stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" />);
-      } else if (i === solidStars && outlinedStars > 0) {
-        stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" style={{ width: `${outlinedStars * 25}%` }} />);
-        stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" style={{ width: `${(4 - outlinedStars) * 25}%` }} />);
-      } else {
-        stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" />);
-      }
-    }
+  //   for (let i = 0; i < 5; i++) {
+  //     if (i < solidStars) {
+  //       stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" />);
+  //     } else if (i === solidStars && outlinedStars > 0) {
+  //       stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" style={{ width: `${outlinedStars * 25}%` }} />);
+  //       stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" style={{ width: `${(4 - outlinedStars) * 25}%` }} />);
+  //     } else {
+  //       stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" />);
+  //     }
+  //   }
 
-    return stars;
-  };
+  //   return stars;
+  // };
 
   return (
     <CardContainer>
-      <a href={`/products/${id}`}>
-        <CardImage src={imageUrl} alt={`${category} - ${name}`} />
+      <a href={`/products/${productId}`}>
+        <CardImage />
       </a>
-      <CardInfo>
-        <CardName>{name}</CardName>
-        <CardPrice>{`$${default_price}`}</CardPrice>
+      {/* <CardInfo>
+        <CardName>{}</CardName>
+        <CardPrice>{`$${}`}</CardPrice>
         {numReviews > 0 && (
           <CardRating>
             {renderStars()}
             <span>{`(${numReviews})`}</span>
           </CardRating>
         )}
-      </CardInfo>
+      </CardInfo> */}
     </CardContainer>
   );
-};
+}
 
 RelatedItemCard.propTypes = {
-  productId: PropTypes.number.isRequired
+  productId: PropTypes.number.isRequired,
 };
 
 export default RelatedItemCard;

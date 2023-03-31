@@ -23,7 +23,7 @@ function RelatedProducts() {
       {relatedIds.length === 0 ? (
         <p>There are no related items to this product</p>
       ) : (
-        relatedIds.map(id => (
+        relatedIds.map((id) => (
           <RelatedItems relatedIds={relatedIds} id={id} />
         ))
       )}
