@@ -6,6 +6,7 @@ import logo from '../images/temp.png';
 import fetchProducts from './Fetcher';
 import ImageView from './Overview/ImageView';
 import SpecsView from './Overview/SpecsView';
+import darkMode from './darkMode';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
           </form>
           <i className="fa-solid fa-cart-shopping fa-2x" />
           <i className="fa-solid fa-user fa-2x" />
+          <button type="button" onClick={darkMode}>dark mode</button>
         </div>
       </div>
 
