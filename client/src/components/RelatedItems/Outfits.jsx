@@ -15,17 +15,22 @@ function Outfits() {
 
   console.log('inside index.jsx Outfits, ', outfits);
 
+  // return (
+  //   <div className="OutfitItems">
+  //     <h2>Your Outfit</h2>
+  //     {outfits.length === 0 ? (
+  //       <p>Add Outfits</p>
+  //     ) : (
+  //         <RelatedItems relatedItems={relatedProducts} />
+  //     )}
+  //   </div>
+  //   // <div></div>
+  // )
   return (
-    <div className="OutfitItems">
+    <div>
       <h2>Your Outfit</h2>
-      {outfits.length === 0 ? (
-        <p>Add Outfits</p>
-      ) : (
-          <RelatedItems relatedItems={relatedProducts} />
-      )}
     </div>
-    // <div></div>
   )
-};
+}
 
 export default Outfits;

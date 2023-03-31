@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // 40435, 40699, 40678
 
-const fetchProducts = (input = 40435, bar = false) => {
+const fetchProducts = (input = 40699, bar = false) => {
   let inputName;
 
   if (bar === false) {
