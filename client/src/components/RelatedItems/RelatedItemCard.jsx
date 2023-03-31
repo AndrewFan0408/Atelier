@@ -1,11 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  width: 250px;
+  height: 350px;
   margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  & > img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  & > h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  & > p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
 `;
 
 const CardImage = styled.img`
@@ -46,48 +72,54 @@ const OutlinedStar = styled.i`
   color: gray;
 `;
 
-const RelatedItemCard = ({ product }) => {
-  const { id, category, name, default_price, rating, numReviews, imageUrl } = product;
+function RelatedItemCard({ productId }) {
+  // const { id, category, name, default_price, rating, numReviews, imageUrl } = product;
 
-  const renderStars = () => {
-    const ratingFloor = Math.floor(rating);
-    const ratingDecimal = rating - ratingFloor;
-    const solidStars = ratingFloor;
-    const outlinedStars = Math.round(ratingDecimal * 4);
+  console.log('inside relatedItemCard: ', productId);
 
-    const stars = [];
+  // const renderStars = () => {
+  //   const ratingFloor = Math.floor(rating);
+  //   const ratingDecimal = rating - ratingFloor;
+  //   const solidStars = ratingFloor;
+  //   const outlinedStars = Math.round(ratingDecimal * 4);
 
-    for (let i = 0; i < 5; i++) {
-      if (i < solidStars) {
-        stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" />);
-      } else if (i === solidStars && outlinedStars > 0) {
-        stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" style={{ width: `${outlinedStars * 25}%` }} />);
-        stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" style={{ width: `${(4 - outlinedStars) * 25}%` }} />);
-      } else {
-        stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" />);
-      }
-    }
+  //   const stars = [];
 
-    return stars;
-  };
+  //   for (let i = 0; i < 5; i++) {
+  //     if (i < solidStars) {
+  //       stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" />);
+  //     } else if (i === solidStars && outlinedStars > 0) {
+  //       stars.push(<SolidStar key={`star-${i}`} className="fa-solid fa-star" style={{ width: `${outlinedStars * 25}%` }} />);
+  //       stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" style={{ width: `${(4 - outlinedStars) * 25}%` }} />);
+  //     } else {
+  //       stars.push(<OutlinedStar key={`star-outline-${i}`} className="fa-regular fa-star" />);
+  //     }
+  //   }
+
+  //   return stars;
+  // };
 
   return (
     <CardContainer>
-      <a href={`/products/${id}`}>
-        <CardImage src={imageUrl} alt={`${category} - ${name}`} />
+      <a href={`/products/${productId}`}>
+        <CardImage />
       </a>
-      <CardInfo>
-        <CardName>{name}</CardName>
-        <CardPrice>{`$${default_price}`}</CardPrice>
+      {/* <CardInfo>
+        <CardName>{}</CardName>
+        <CardPrice>{`$${}`}</CardPrice>
         {numReviews > 0 && (
           <CardRating>
             {renderStars()}
             <span>{`(${numReviews})`}</span>
           </CardRating>
         )}
-      </CardInfo>
+      </CardInfo> */}
     </CardContainer>
   );
+}
+
+RelatedItemCard.propTypes = {
+  productId: PropTypes.number.isRequired,
 };
 
 export default RelatedItemCard;

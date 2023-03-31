@@ -69,7 +69,7 @@ function App() {
       </div>
 
       <div id="related-items">
-        <h2>Related Items</h2>
+        <h2>Related Products</h2>
         <RelatedProducts />
       </div>
     </>
