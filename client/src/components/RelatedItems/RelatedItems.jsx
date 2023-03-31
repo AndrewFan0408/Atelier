@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -19,17 +19,10 @@ const RelatedItemsContainer = styled.div`
 
 function RelatedItems({ relatedIds, id }) {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
-  // const [prodDetail, setProdDetail] = useState({});
-  // const [prodStyle, setProdStyle] = useState([]);
-  // const [prodImg, setProdImg] = useState('');
-  // const [prodRating, setProdRating] = useState(0);
-  // const [currentProduct, setCurrentProduct] = useState(null);
-  const currentProduct = useSelector((state) => state.relatedItemsReducer.relatedProduct);
-  const dispatch = useDispatch();
-
-  console.log('inside relatedItems, relatedIds = ', relatedIds);
-  console.log('inside relatedItems...id = ', id);
-  console.log('before useEffect, currentProduct = ', currentProduct);
+  const [itemDetail, setItemDetail] = useState({});
+  const [itemStyle, setItemStyle] = useState([]);
+  const [itemImg, setItemImg] = useState('');
+  const [itemRating, setItemRating] = useState(0);
 
   const handlePrevious = () => {
     if (currentProductIndex > 0) {
@@ -44,22 +37,62 @@ function RelatedItems({ relatedIds, id }) {
   };
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_RELATED_PRODUCT_SUCCESS' });
+    axios.get(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`,
+      {
+        headers: { Authorization: process.env.AUTH_SECRET },
+      },
+    )
+      .then((response) => {
+        setItemDetail(response.data);
+      })
+      .catch((error) => { throw error; });
+    axios.get(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`,
+      {
+        headers: { Authorization: process.env.AUTH_SECRET },
+      },
+    )
+      .then(({ data }) => {
+        setItemStyle(data.results);
+        setItemImg(data.results[0].photos[0].thumbnail_url);
+      })
+      .catch((error) => { throw error; });
+    axios.get(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${id}`,
+      {
+        headers: { Authorization: process.env.AUTH_SECRET },
+      },
+    )
+      .then(({ data }) => {
+        setItemRating(data.ratings);
+      })
+      .catch((error) => { throw error; });
   }, [id]);
 
-  console.log('inside relatedItems after useEffect, currentProduct = ', currentProduct);
+  console.log('inside relatedItems after useEffect, itemDetail = ', itemDetail);
+  console.log('inside relatedItems after useEffect, itemStyle = ', itemStyle);
+  console.log('inside relatedItems after useEffect, itemImg = ', itemImg);
+  console.log('inside relatedItems after useEffect, itemRating = ', itemRating);
+  console.log('inside relatedItems after useEffect, itemCategory = ', itemDetail.category);
 
   return (
     <div>
       <RelatedItemsContainer>
         {currentProductIndex > 0 && (
-        <button className="prevButton" onClick={handlePrevious}>{'\u2190'}</button>
+        <button type="button" className="prevButton" onClick={handlePrevious}>{'\u2190'}</button>
         )}
-        {relatedIds.map((id) => (
-          <RelatedItemCard productId={id} key={id} />
-        ))}
+        <RelatedItemCard
+          itemPrice={itemDetail.default_price}
+          itemCategory={itemDetail.category}
+          itemName={itemDetail.name}
+          itemStyle={itemStyle}
+          itemImg={itemImg}
+          itemRating={itemRating}
+          key={id}
+        />
         {currentProductIndex < relatedIds.length - 1 && (
-        <button className="nextButton" onClick={handleNext}>{'\u2192'}</button>
+        <button type="button" className="nextButton" onClick={handleNext}>{'\u2192'}</button>
         )}
       </RelatedItemsContainer>
     </div>
@@ -67,7 +100,7 @@ function RelatedItems({ relatedIds, id }) {
 }
 
 RelatedItems.propTypes = {
-  relatedIds: PropTypes.array.isRequired,
+  relatedIds: PropTypes.arrayOf(PropTypes.number).isRequired,
   id: PropTypes.number.isRequired,
 };
 
