@@ -56,7 +56,6 @@ h5 {
 #header {
   width: 100%;
   margin-left: -3px;
-  border: 3px solid blue;
   position: relative;
 }
 
@@ -105,7 +104,6 @@ h5 {
   display: inline-block;
 
   padding-top: 5px;
-  border: 3px solid blue;
 
   width: 60%;
   height: var(--overviewSize);
@@ -137,7 +135,6 @@ h5 {
 /* _________________________ */
 
 #overview-info {
-  border: 3px solid blue;
   float: right;
 
   width: 39%;
@@ -146,7 +143,6 @@ h5 {
 }
 
 #sticky-item {
-  border: 3px solid blue;
   top: 0;
   height: 80vh;
 
@@ -329,7 +325,6 @@ h5 {
   display: inline-block;
 
   padding-top: 5px;
-  border: 3px solid blue;
 
   /* DO NOT change height from here, go to root */
   width: 60%;
@@ -427,6 +422,7 @@ h5 {
 }
 .question-body {
   font-size: 25px;
+  font-weight: bold;
 }
 .additional-info-container {
   display: grid;
@@ -498,6 +494,7 @@ h5 {
 }
 .answer-list-container {
   border-bottom: 10px solid #005a24;
+  background-color: #d6d6d6
 }
 .answer-list-container button {
   margin-right: 10px;
@@ -622,7 +619,6 @@ h5 {
   display: inline-block;
 
   padding-top: 5px;
-  border: 3px solid blue;
 
   /* DO NOT change height from here, go to root */
   width: 100%;
