@@ -1,11 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  width: 250px;
+  height: 350px;
   margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  & > img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  & > h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  & > p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
 `;
 
 const CardImage = styled.img`
@@ -46,8 +72,10 @@ const OutlinedStar = styled.i`
   color: gray;
 `;
 
-const RelatedItemCard = ({ product }) => {
-  const { id, category, name, default_price, rating, numReviews, imageUrl } = product;
+const RelatedItemCard = ({ productId }) => {
+  // const { id, category, name, default_price, rating, numReviews, imageUrl } = product;
+
+  console.log('inside relatedItemCard: ', productId);
 
   const renderStars = () => {
     const ratingFloor = Math.floor(rating);
@@ -88,6 +116,10 @@ const RelatedItemCard = ({ product }) => {
       </CardInfo>
     </CardContainer>
   );
+};
+
+RelatedItemCard.propTypes = {
+  productId: PropTypes.number.isRequired
 };
 
 export default RelatedItemCard;

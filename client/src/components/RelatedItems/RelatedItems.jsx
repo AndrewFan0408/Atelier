@@ -1,21 +1,35 @@
-import React, { useState, useEffect, useContext } from 'react';
-// import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import itemContext from './itemContext';
 import RelatedItemCard from './RelatedItemCard';
+import axios from 'axios';
 
 const RelatedItemsContainer = styled.div`
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   padding: 20px 0;
+  scroll-behavior: smooth;
+
+  & > div {
+    scroll-snap-align: start;
+  }
 `;
 
-const RelatedItems = ({ relatedItems }) => {
-  const [relatedProducts, setRelatedProducts] = useState(relatedItems);
+const RelatedItems = ({ relatedIds, id }) => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
-  // const { itemID } = useContext(itemContext);
-  console.log(relatedItems);
+  // const [prodDetail, setProdDetail] = useState({});
+  // const [prodStyle, setProdStyle] = useState([]);
+  // const [prodImg, setProdImg] = useState('');
+  // const [prodRating, setProdRating] = useState(0);
+  // const [currentProduct, setCurrentProduct] = useState(null);
+  const currentProduct = useSelector((state) => state.relatedItemsReducer.relatedProduct);
+  const dispatch = useDispatch();
+
+  console.log('inside relatedItems, relatedIds = ', relatedIds);
+  console.log('inside relatedItems...id = ', id);
+  console.log('before useEffect, currentProduct = ', currentProduct);
 
   const handlePrevious = () => {
     if (currentProductIndex > 0) {
@@ -24,53 +38,39 @@ const RelatedItems = ({ relatedItems }) => {
   };
 
   const handleNext = () => {
-    if (currentProductIndex < relatedProducts.length -1) {
+    if (currentProductIndex < relatedIds.length - 1) {
       setCurrentProductIndex(currentProductIndex + 1);
     }
   };
 
-  // relatedItems.forEach(id => {
-  //   useEffect(() => {
+  useEffect(() => {
+    dispatch({ type: 'FETCH_RELATED_PRODUCT_SUCCESS' });
+  }, [id]);
 
-  //     axios.get(`/products/${id}/related`)
-  //       .then((response) => {
-  //         setRelatedProducts(response.data);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }, [id])
-  // });
-
-
-  // return (
-  //   <div id="RelatedItems">
-  //     <p>This is the RelatedItems component</p>
-  //   </div>
-  // )
+  console.log('inside relatedItems after useEffect, currentProduct = ', currentProduct);
 
   return (
     <div>
-      {/* <h2>Related Items</h2> */}
-      {relatedProducts.length > 0 ? (
         <>
-          <button onClick={handlePrevious} disabled={currentProductIndex === 0}>
-            Prev
-          </button>
-          <button onClick={handleNext} disabled={currentProductIndex === relatedProducts.length - 1}>
-            Next
-          </button>
-          <RelatedItemsContainer>
-            {relatedProducts.map((product, index) => (
-              <RelatedItemCard key={product.id} product={product} index={index} currentProductIndex={currentProductIndex} />
-            ))}
-          </RelatedItemsContainer>
+        <RelatedItemsContainer>
+          {currentProductIndex > 0 && (
+            <button className="prevButton" onClick={handlePrevious}>{'\u2190'}</button>
+          )}
+          {relatedIds.map(id => (
+            <RelatedItemCard productId={id} key={id}/>
+          ))}
+          {currentProductIndex < relatedIds.length - 1 && (
+            <button className="nextButton" onClick={handleNext}>{'\u2192'}</button>
+          )}
+        </RelatedItemsContainer>
         </>
-      ) : (
-        <p>No related items found.</p>
-      )}
     </div>
   );
+};
+
+RelatedItems.propTypes = {
+  relatedIds: PropTypes.array.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 export default RelatedItems;

@@ -17,9 +17,11 @@ const ov_InitialState = {
 };
 
 const rl_InitialState = {
-  relatedItems: [],
+  loading: true,
+  error: null,
   product: {},
-  ratings: {},
+  relatedIds: [],
+  relatedProducts: [],
 };
 
 const answerListReducer = (state = al_InitialState, action) => {
@@ -62,8 +64,32 @@ const overviewReducer = (state = ov_InitialState, action) => {
 
 const relatedItemsReducer = (state = rl_InitialState, action) => {
   switch (action.type) {
-    case 'GET_IDS_SUCCESS':
-      return { ...state, relatedIds: action.relatedIds };
+    case 'FETCH_RELATED_IDS_SUCCESS':
+      return {
+        ...state,
+        // loading: false,
+        relatedIds: action.relatedIds,
+      };
+    case 'FETCH_RELATED_PRODUCT_SUCCESS':
+      return {
+        ...state,
+        // loading: false,
+        relatedProduct: action.relatedProduct,
+        outfitProducts: action.outfitProducts,
+      };
+    case 'GET_RELATED_PRODUCT_SUCCESS':
+      return {
+        ...state,
+        // loading: false,
+        product: action.product,
+        outfitProducts: action.outfitProducts,
+      };
+    case 'FETCH_RELATED_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
     default:
       return state;
   }

@@ -38,6 +38,11 @@ const fetchProducts = (input = 40435, bar = false) => {
           product: response.data,
         });
 
+        dispatch({
+          type: 'GET_RELATED_PRODUCT_SUCCESS',
+          product: response.data,
+        });
+
         return response.data.id;
       })
       .then((productId) => {
@@ -98,14 +103,31 @@ const fetchProducts = (input = 40435, bar = false) => {
         )
           .then((response) => {
             dispatch({
-              type: 'GET_IDS_SUCCESS',
+              type: 'FETCH_RELATED_IDS_SUCCESS',
               relatedIds: response.data,
             });
           })
           .catch((err) => {
-            console.log('err fetching related items\n', err);
+            console.log('err fetching related ids\n', err);
+          });
+
+        axios.get(
+          `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${productId}`,
+          {
+            headers: { Authorization: process.env.AUTH_SECRET },
+          },
+        )
+          .then((response) => {
+            dispatch({
+              type: 'FETCH_RELATED_PRODUCT_SUCCESS',
+              relatedProduct: response.data,
+            });
+          })
+          .catch((err) => {
+            console.log('err fetching related products\n', err);
           });
       })
+
       .catch((error) => {
         console.log('err fetching from server\n', error);
 
