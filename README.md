@@ -16,9 +16,9 @@ A modernized e-commerce site built for an optimal user browsing experience.
 
 ## Related Products & Your Outfit
 #### Features
-- 
-- 
-- 
+- Related Products list with comparison modals
+- Outfits list that users could customize
+- Re-renders the page with the selected related product once user clicks on its image
 
 ## Questions & Answers
 #### Features
