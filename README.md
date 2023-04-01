@@ -40,16 +40,9 @@ Installation
     ```
 - Copy example.env file and rename to .env with the following within
     ```
-        PORT=3000
-
-        HOST='localhost'
-
         API_TOKEN='Insert API token'
-
-        WEBPACK_MODE='development'
     ```
 - Run the following script
     ```
         npm run dev
-        npm run start
     ```
