@@ -40,7 +40,7 @@ Installation
     ```
 - Copy example.env file and rename to .env with the following within
     ```
-        API_TOKEN='Insert API token'
+        AUTH_SECRET='Insert API token'
     ```
 - Run the following script
     ```
