@@ -38,7 +38,7 @@ Installation
     ```
         npm install
     ```
-- Copy example.env file and rename to .env with the following within
+- add a .env file in the root directory and add
     ```
         AUTH_SECRET='Insert API token'
     ```
